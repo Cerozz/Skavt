@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/rope" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Namen: to pa tist"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Zahtevnost: ***"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.89"
+        android:text="Lorem ipsum dolor sit amettpat tempor lorem eget molestie. Donec porta magna eget sem ullamcorper, et venenatis nunc aliquam. Proin ornare posuere dapibus.  Aliquam pretium justo gravida risus pulvinar, ut auctor nunc sodales. Integer quis porttitor ante. Vivamus non mauris vitae leo fermentum dictum pharetra id arcu. Phasellus sed laoreet est, eu aliquam ligula. Ut euismod dolor sed egestas lacinia. Nulla vel turpis ante. Curabitur est tellus, molestie sit amet lobortis sed, interdum a ante. Aliquam commodo arcu felis, eu faucibus ex fermentum molestie. Morbi non ex sed augue fermentum ornare. Phasellus velit velit, finibus quis felis eu, ultricies convallis magna. Praesent sed sagittis quam. Sed eget blandit ante. Suspendisse venenatis nisl justo, ut accumsan eros maximus in. Duis pharetra arcu non sodales tristique. Praesent sit amet convallis metus.  Proin et libero quis mauris malesuada egestas ut vel lacus. Ae"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</LinearLayout>
