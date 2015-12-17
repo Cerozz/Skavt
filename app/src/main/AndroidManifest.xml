@@ -36,11 +36,16 @@
             android:label="Svetilka" />
         <activity
             android:name=".Experiences"
+            android:parentActivityName="com.example.zoki.skavt.MainActivity"
             android:label="Deli izkušnje" />
         <activity android:name=".ExperienceDetails" >
         </activity>
         <activity android:name=".CreateExperience" >
         </activity>
+        <activity
+            android:name=".LoginExperience"
+            android:label="Prijava"
+            android:noHistory="true"/>
     </application>
 
 </manifest>

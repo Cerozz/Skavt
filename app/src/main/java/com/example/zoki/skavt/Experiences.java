@@ -27,12 +27,19 @@ import java.util.ArrayList;
 public class Experiences extends AppCompatActivity {
 
     private ListView lvExperiences;
-    private TextView tvData;
+    private TextView tvUsername;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experiences);
+
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("USERNAME");
+        tvUsername = (TextView)findViewById(R.id.tvUsername);
+        tvUsername.setText("Pozdravljen/a: " + username);
+
 
         new JSONTaskGet().execute("http://skavtskiprirocnik.azurewebsites.net/api/experiences");
 
@@ -45,6 +52,7 @@ public class Experiences extends AppCompatActivity {
             }
         });
 
+
         lvExperiences = (ListView)findViewById(R.id.lvExperiences);
         lvExperiences.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -55,6 +63,8 @@ public class Experiences extends AppCompatActivity {
             }
         });
     }
+
+
 
     public class JSONTaskGet extends AsyncTask<String, ArrayList<Izkusnja>, ArrayList<String>> {
 

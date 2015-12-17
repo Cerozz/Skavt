@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent start = new Intent(MainActivity.this, Flashlight.class);
                             startActivity(start);
                         } else if (ime.equals("Deli izkušnje")) {
-                            Intent start = new Intent(MainActivity.this, Experiences.class);
+                            Intent start = new Intent(MainActivity.this, LoginExperience.class);
                             startActivity(start);
                         }
                     }
