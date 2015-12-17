@@ -16,9 +16,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String[] poglavja = {"Vozli", "Zavetje", "Ognji", "Navigacija", "Nasveti", "Klepetalnica", "Svetilka"};
+        String[] poglavja = {"Vozli", "Zavetje", "Ognji", "Navigacija", "Nasveti", "Deli izkušnje", "Svetilka"};
         int[] slike = {R.drawable.rope, R.drawable.home, R.drawable.flames, R.drawable.compass, R.drawable.books, R.drawable.social, R.drawable.flashlight};
-        String[] opisi = {"O vozlih, kako jih naredimo in čemu so namenjeni", "Gradnja učinkovitega zavetja", "Različni ognji in njihovi nameni", "Kako uporabiti navigacijske zemljevide in kompas", "Koristno znanje za vsakogar", "Deli izkušnje z ostalimi", "Svetilka za temne dni"};
+        String[] opisi = {"O vozlih, kako jih naredimo in čemu so namenjeni", "Gradnja učinkovitega zavetja", "Različni ognji in njihovi nameni", "Kako uporabiti navigacijske zemljevide in kompas", "Koristno znanje za vsakogar", "Objavi svoje izkušnje (potrebuje internetno povezavo)", "Svetilka za temne dni"};
         ListAdapter adapter = new Adapter(this, poglavja, slike, opisi);
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String ime = String.valueOf(parent.getItemAtPosition(position));
-                        if (!ime.equals("Svetilka") && !ime.equals("Klepetalnica")) {
+                        if (!ime.equals("Svetilka") && !ime.equals("Deli izkušnje")) {
                             Intent start = new Intent(MainActivity.this, SubDirectory.class);
                             Bundle extra = new Bundle();
                             extra.putString("ime", ime);
@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
                         } else if (ime.equals("Svetilka")) {
                             Intent start = new Intent(MainActivity.this, Flashlight.class);
                             startActivity(start);
-                        } else if (ime.equals("Klepetalnica")) {
-                            Intent start = new Intent(MainActivity.this, Chat.class);
+                        } else if (ime.equals("Deli izkušnje")) {
+                            Intent start = new Intent(MainActivity.this, Experiences.class);
                             startActivity(start);
                         }
                     }

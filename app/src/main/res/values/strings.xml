@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Moj Skavt</string>
     <string name="title_activity_about">Informacije</string>
+    <string-array name="categories_array">
+        <item>Orientacija</item>
+        <item>Bivaki</item>
+        <item>Vozli</item>
+    </string-array>
 </resources>
