@@ -1,4 +1,4 @@
-package com.example.zoki.skavt;
+package com.example.zoki.skavt.Experiences;
 
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.zoki.skavt.R;
 
 import org.json.JSONObject;
 
@@ -22,12 +24,12 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class CreateExperience extends AppCompatActivity {
+public class ExperienceCreate extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_experience);
+        setContentView(R.layout.activity_experience_create);
 
         //dropdown za izbiranje
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -45,10 +47,10 @@ public class CreateExperience extends AppCompatActivity {
         });
     }
 
-    public class JsonTaskPost extends AsyncTask<String, ArrayList<Izkusnja>, ArrayList<Izkusnja>> {
+    public class JsonTaskPost extends AsyncTask<String, ArrayList<Experience>, ArrayList<Experience>> {
 
         @Override
-        protected ArrayList<Izkusnja> doInBackground(String... params) {
+        protected ArrayList<Experience> doInBackground(String... params) {
             HttpURLConnection connection = null;
             BufferedReader reader = null;
             String message = new JSONObject().toString();
@@ -86,7 +88,7 @@ public class CreateExperience extends AppCompatActivity {
 
 
         @Override
-        protected void onPostExecute(ArrayList<Izkusnja> result) {
+        protected void onPostExecute(ArrayList<Experience> result) {
             super.onPostExecute(result);
 
 

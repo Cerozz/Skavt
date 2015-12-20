@@ -5,7 +5,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.zoki.skavt.CreateExperience">
+    tools:context="com.example.zoki.skavt.Experiences.ExperienceCreate">
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,6 +35,7 @@
         android:layout_marginTop="61dp" />
 
     <EditText
+        android:inputType="textMultiLine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editText2"

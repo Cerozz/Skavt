@@ -1,17 +1,16 @@
-package com.example.zoki.skavt;
+package com.example.zoki.skavt.Experiences;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONException;
+import com.example.zoki.skavt.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,9 +19,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
-import java.util.ArrayList;
 
-public class LoginExperience extends AppCompatActivity {
+public class ExperienceLogin extends AppCompatActivity {
 
     private EditText etUsername, etPassword;
     private TextView tvInfo;
@@ -33,7 +31,7 @@ public class LoginExperience extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_experience);
+        setContentView(R.layout.activity_experience_login);
 
         IsLoggedIn = false;
 
@@ -105,7 +103,7 @@ public class LoginExperience extends AppCompatActivity {
 
             if (result.equals("true")){
                 IsLoggedIn = true;
-                Intent intent = new Intent(LoginExperience.this, Experiences.class);
+                Intent intent = new Intent(ExperienceLogin.this, ExperienceMain.class);
                 intent.putExtra("USERNAME", username);
                 startActivity(intent);
             }

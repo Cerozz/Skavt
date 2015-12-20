@@ -1,4 +1,4 @@
-package com.example.zoki.skavt;
+package com.example.zoki.skavt.Experiences;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.zoki.skavt.R;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,19 +26,20 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class Experiences extends AppCompatActivity {
+public class ExperienceMain extends AppCompatActivity {
 
-    private ListView lvExperiences;
+    private ListView lvExperiences,lvMyExperiences;
+    private String username;
     private TextView tvUsername;
 
-
+    private ArrayList<String> my_experience, experiences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_experiences);
+        setContentView(R.layout.activity_experience_main);
 
         Intent intent = getIntent();
-        String username = intent.getStringExtra("USERNAME");
+        username = intent.getStringExtra("USERNAME");
         tvUsername = (TextView)findViewById(R.id.tvUsername);
         tvUsername.setText("Pozdravljen/a: " + username);
 
@@ -47,7 +50,7 @@ public class Experiences extends AppCompatActivity {
         btnNewExperience.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Experiences.this, CreateExperience.class);
+                Intent intent = new Intent(ExperienceMain.this, ExperienceCreate.class);
                 startActivity(intent);
             }
         });
@@ -57,7 +60,17 @@ public class Experiences extends AppCompatActivity {
         lvExperiences.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(Experiences.this, ExperienceDetails.class);
+                Intent intent = new Intent(ExperienceMain.this, ExperienceDetails.class);
+                intent.putExtra("POSITION", Integer.toString(position));
+                startActivity(intent);
+            }
+        });
+
+        lvMyExperiences = (ListView)findViewById(R.id.lvMyExperiences);
+        lvMyExperiences.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ExperienceMain.this, ExperienceDetails.class);
                 intent.putExtra("POSITION", Integer.toString(position));
                 startActivity(intent);
             }
@@ -66,7 +79,7 @@ public class Experiences extends AppCompatActivity {
 
 
 
-    public class JSONTaskGet extends AsyncTask<String, ArrayList<Izkusnja>, ArrayList<String>> {
+    public class JSONTaskGet extends AsyncTask<String, Void, ArrayList<String>> {
 
         @Override
         protected ArrayList<String> doInBackground(String... params) {
@@ -88,18 +101,23 @@ public class Experiences extends AppCompatActivity {
                 String finalJson = buffer.toString();
 
                 JSONArray finalObject = new JSONArray(finalJson);
-                ArrayList<String> izkusnje = new ArrayList<>();
+                experiences = new ArrayList<>();
+                my_experience = new ArrayList<>();
                 for (int i = 0; i < finalObject.length(); i++) {
                     try {
                         JSONObject bla = finalObject.getJSONObject(i);
                         String naslov = bla.getString("Title");
-                        izkusnje.add(i, naslov);
+                        String author = bla.getString("Author");
+                        experiences.add(i, naslov + "\n" +  "Avtor: " + author);
+                        if(author.equals(username)){
+                            my_experience.add(naslov + "\n" + "Avtor: " + author);
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
                 }
-                return izkusnje;
+                return experiences;
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -125,10 +143,12 @@ public class Experiences extends AppCompatActivity {
         protected void onPostExecute(ArrayList<String> result) {
             super.onPostExecute(result);
 
-            ArrayAdapter adapter = new ArrayAdapter<String>(Experiences.this, R.layout.row_list, result);
+            ArrayAdapter adapter_all = new ArrayAdapter<String>(ExperienceMain.this, R.layout.row_list, result);
+            ArrayAdapter adapter_my = new ArrayAdapter<String>(ExperienceMain.this, R.layout.row_list, my_experience);
 
-            if (result != null){
-                lvExperiences.setAdapter(adapter);
+            if (result !=null && lvMyExperiences !=null){
+                lvExperiences.setAdapter(adapter_all);
+                lvMyExperiences.setAdapter(adapter_my);
             }
             else {
                 Toast toast = Toast.makeText(getApplicationContext(), "Napaka pri komunikaciji z strežnikom", Toast.LENGTH_SHORT);

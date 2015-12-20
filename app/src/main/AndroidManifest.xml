@@ -35,15 +35,15 @@
             android:name=".Flashlight"
             android:label="Svetilka" />
         <activity
-            android:name=".Experiences"
+            android:name=".Experiences.ExperienceMain"
             android:parentActivityName="com.example.zoki.skavt.MainActivity"
             android:label="Deli izkušnje" />
-        <activity android:name=".ExperienceDetails" >
+        <activity android:name=".Experiences.ExperienceDetails" >
         </activity>
-        <activity android:name=".CreateExperience" >
+        <activity android:name=".Experiences.ExperienceCreate" >
         </activity>
         <activity
-            android:name=".LoginExperience"
+            android:name=".Experiences.ExperienceLogin"
             android:label="Prijava"
             android:noHistory="true"/>
     </application>

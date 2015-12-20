@@ -1,4 +1,4 @@
-package com.example.zoki.skavt;
+package com.example.zoki.skavt.Experiences;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -9,8 +9,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.zoki.skavt.R;
+import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -44,10 +44,10 @@ public class ExperienceDetails extends AppCompatActivity {
         });
     }
 
-    public class JSONTaskGet extends AsyncTask<String, ArrayList<Izkusnja>, Izkusnja> {
+    public class JSONTaskGet extends AsyncTask<String, ArrayList<Experience>, Experience> {
 
         @Override
-        protected Izkusnja doInBackground(String... params) {
+        protected Experience doInBackground(String... params) {
             HttpURLConnection connection = null;
             BufferedReader reader = null;
 
@@ -65,11 +65,11 @@ public class ExperienceDetails extends AppCompatActivity {
                 }
                 String finalJson = buffer.toString();
 
-                JSONObject finalObject = new JSONObject(finalJson);
-                Izkusnja iz = new Izkusnja(finalObject.getInt("ExperienceID"),finalObject.getString("Title"), finalObject.getString("Details"), finalObject.getInt("CatID"));
-                return iz;
+                final Gson gson = new Gson();
+                Experience ex = gson.fromJson(finalJson, Experience.class);
 
-            } catch (JSONException | IOException e) {
+                return ex;
+            } catch (IOException e) {
                 e.printStackTrace();
             } finally {
                 if (connection != null)
@@ -86,13 +86,13 @@ public class ExperienceDetails extends AppCompatActivity {
 
 
         @Override
-        protected void onPostExecute(Izkusnja result) {
+        protected void onPostExecute(Experience result){
             super.onPostExecute(result);
             TextView tvTitle = (TextView)findViewById(R.id.tvTitle);
             TextView tvDetails = (TextView)findViewById(R.id.tvDetails);
             if (result != null){
-                tvTitle.setText(result.Naslov);
-                tvDetails.setText(result.Opis);
+                tvTitle.setText(result.Title);
+                tvDetails.setText(result.Details);
 
             }
             else {

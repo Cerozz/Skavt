@@ -10,6 +10,8 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.example.zoki.skavt.Experiences.ExperienceLogin;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent start = new Intent(MainActivity.this, Flashlight.class);
                             startActivity(start);
                         } else if (ime.equals("Deli izkušnje")) {
-                            Intent start = new Intent(MainActivity.this, LoginExperience.class);
+                            Intent start = new Intent(MainActivity.this, ExperienceLogin.class);
                             startActivity(start);
                         }
                     }
