@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Prijavi"
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnConfirm"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="173dp" />
@@ -22,7 +22,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/etPassword"
-        android:layout_above="@+id/btnLogin"
+        android:layout_above="@+id/btnConfirm"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:hint="****" />
@@ -42,7 +42,45 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/tvInfoLogin"
         android:layout_marginTop="75dp"
-        android:layout_alignTop="@+id/btnLogin"
+        android:layout_alignTop="@+id/btnConfirm"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Uporabniško ime:"
+        android:id="@+id/tvLabelUsername"
+        android:layout_above="@+id/etUsername"
+        android:layout_alignParentStart="true"
+        android:textColor="#000000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Geslo:"
+        android:id="@+id/tvLabelPassword"
+        android:layout_above="@+id/etPassword"
+        android:layout_alignParentStart="true"
+        android:textColor="#000000" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registriraj"
+        android:id="@+id/btnRegister"
+        android:layout_below="@+id/tvInfoLogin"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Nimaš še računa? "
+        android:id="@+id/tvLabelRegisterInfo"
+        android:textColor="#000000"
+        android:layout_above="@+id/btnRegister"
+        android:layout_toEndOf="@+id/tvInfoLogin" />
 
 </RelativeLayout>

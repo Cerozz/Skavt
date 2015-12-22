@@ -7,4 +7,5 @@ public class Experience {
     public String Author;
     public Integer CatID;
     public Object Categories;
+    public Integer Likes;
 }

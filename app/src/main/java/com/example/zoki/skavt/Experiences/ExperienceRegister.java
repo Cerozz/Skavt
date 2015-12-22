@@ -20,46 +20,33 @@ import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 
-public class ExperienceLogin extends AppCompatActivity {
+public class ExperienceRegister extends AppCompatActivity {
 
-    private EditText etUsername, etPassword;
+    private EditText etRegisterUsername, etRegisterPassword;
     private TextView tvInfo;
     private String username, password;
-    private Boolean IsLoggedIn;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_experience_login);
+        setContentView(R.layout.activity_experience_register);
 
-        IsLoggedIn = false;
+        etRegisterUsername = (EditText)findViewById(R.id.etRegisterUsername);
+        etRegisterPassword = (EditText)findViewById(R.id.etRegisterPassword);
 
-        etUsername = (EditText)findViewById(R.id.etUsername);
-        etPassword = (EditText)findViewById(R.id.etPassword);
-        tvInfo = (TextView)findViewById(R.id.tvInfoLogin);
+        tvInfo = (TextView)findViewById(R.id.tvRegisterInfo);
 
-        Button btnLogin = (Button)findViewById(R.id.btnConfirm);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        Button btnConfirmRegister = (Button)findViewById(R.id.btnRegisterConfirm);
+        btnConfirmRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                username = etUsername.getText().toString();
-                password = etPassword.getText().toString();
-                if (!username.isEmpty() && !password.isEmpty()){
-                    new JSONTaskGet().execute("http://skavtskiprirocnik.azurewebsites.net/api/users/" + username + "/" + password);
-                }
-                else {
+                username = etRegisterUsername.getText().toString();
+                password = etRegisterPassword.getText().toString();
+                if (!username.isEmpty() && !password.isEmpty()) {
+                    new JSONTaskGet().execute("http://skavtskiprirocnik.azurewebsites.net/api/users/" + username );
+                } else {
                     tvInfo.setText("Vpiši vse podatke");
                 }
-            }
-        });
-
-        Button btnRegister = (Button)findViewById(R.id.btnRegister);
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ExperienceLogin.this, ExperienceRegister.class);
-                startActivity(intent);
             }
         });
     }
@@ -74,6 +61,7 @@ public class ExperienceLogin extends AppCompatActivity {
             try {
                 URL url = new URL(params[0]);
                 connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("POST");
                 connection.connect();
                 reader = new BufferedReader(
                         new InputStreamReader(connection.getInputStream()));
@@ -111,17 +99,12 @@ public class ExperienceLogin extends AppCompatActivity {
             super.onPostExecute(result);
 
             if (result.equals("true")){
-                IsLoggedIn = true;
-                Intent intent = new Intent(ExperienceLogin.this, ExperienceMain.class);
-                intent.putExtra("USERNAME", username);
-                startActivity(intent);
+                Toast toast = Toast.makeText(getApplicationContext(), "Uspešno dodan uporabnik: " + etRegisterUsername.getText().toString(), Toast.LENGTH_SHORT);
+                toast.show();
             }
             else{
-                tvInfo.setText("Napačno uporabniško ime oz. geslo");
+                tvInfo.setText("To uporabniško ime je že zasedeno");
             }
-
-
         }
     }
-
 }

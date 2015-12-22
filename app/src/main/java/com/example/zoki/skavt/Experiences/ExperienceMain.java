@@ -105,12 +105,13 @@ public class ExperienceMain extends AppCompatActivity {
                 my_experience = new ArrayList<>();
                 for (int i = 0; i < finalObject.length(); i++) {
                     try {
-                        JSONObject bla = finalObject.getJSONObject(i);
-                        String naslov = bla.getString("Title");
-                        String author = bla.getString("Author");
-                        experiences.add(i, naslov + "\n" +  "Avtor: " + author);
+                        JSONObject odgovor = finalObject.getJSONObject(i);
+                        String title = odgovor.getString("Title");
+                        String author = odgovor.getString("Author");
+                        String likes = Integer.toString(odgovor.getInt("Likes"));
+                        experiences.add(i, title + "\n" +  "Avtor: " + author + ",  " + "Všečki: " + likes);
                         if(author.equals(username)){
-                            my_experience.add(naslov + "\n" + "Avtor: " + author);
+                            my_experience.add(title + ",  " + "Všečki: " + likes);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
