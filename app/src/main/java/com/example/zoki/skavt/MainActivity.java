@@ -10,9 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.example.zoki.skavt.Experiences.Experience;
 import com.example.zoki.skavt.Experiences.ExperienceLogin;
-import com.example.zoki.skavt.Experiences.ExperienceMain;
 
 public class MainActivity extends AppCompatActivity {
 

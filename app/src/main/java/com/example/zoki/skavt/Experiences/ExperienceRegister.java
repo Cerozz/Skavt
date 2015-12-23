@@ -2,14 +2,17 @@ package com.example.zoki.skavt.Experiences;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.zoki.skavt.About;
 import com.example.zoki.skavt.R;
 
 import java.io.BufferedReader;
@@ -31,19 +34,19 @@ public class ExperienceRegister extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experience_register);
 
-        etRegisterUsername = (EditText)findViewById(R.id.etRegisterUsername);
-        etRegisterPassword = (EditText)findViewById(R.id.etRegisterPassword);
+        etRegisterUsername = (EditText) findViewById(R.id.etRegisterUsername);
+        etRegisterPassword = (EditText) findViewById(R.id.etRegisterPassword);
 
-        tvInfo = (TextView)findViewById(R.id.tvRegisterInfo);
+        tvInfo = (TextView) findViewById(R.id.tvRegisterInfo);
 
-        Button btnConfirmRegister = (Button)findViewById(R.id.btnRegisterConfirm);
+        Button btnConfirmRegister = (Button) findViewById(R.id.btnRegisterConfirm);
         btnConfirmRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 username = etRegisterUsername.getText().toString();
                 password = etRegisterPassword.getText().toString();
                 if (!username.isEmpty() && !password.isEmpty()) {
-                    new JSONTaskGet().execute("http://skavtskiprirocnik.azurewebsites.net/api/users/" + username );
+                    new JSONTaskGet().execute("http://skavtskiprirocnik.azurewebsites.net/api/users/" + username);
                 } else {
                     tvInfo.setText("Vpiši vse podatke");
                 }
@@ -73,7 +76,7 @@ public class ExperienceRegister extends AppCompatActivity {
                 }
                 return buffer.toString();
 
-            }catch (SocketTimeoutException e) {
+            } catch (SocketTimeoutException e) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Napaka pri komunikaciji z strežnikom, preverite internetno povezavo", Toast.LENGTH_SHORT);
                 toast.show();
             } catch (MalformedURLException e) {
@@ -98,13 +101,28 @@ public class ExperienceRegister extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            if (result.equals("true")){
+            if (result.equals("true")) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Uspešno dodan uporabnik: " + etRegisterUsername.getText().toString(), Toast.LENGTH_SHORT);
                 toast.show();
-            }
-            else{
+            } else {
                 tvInfo.setText("To uporabniško ime je že zasedeno");
             }
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.info) {
+            Intent start = new Intent(ExperienceRegister.this, About.class);
+            startActivity(start);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

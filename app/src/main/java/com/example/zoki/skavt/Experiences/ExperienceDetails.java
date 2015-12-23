@@ -2,19 +2,18 @@ package com.example.zoki.skavt.Experiences;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.zoki.skavt.About;
 import com.example.zoki.skavt.R;
 import com.google.gson.Gson;
-
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,7 +25,7 @@ import java.util.ArrayList;
 public class ExperienceDetails extends AppCompatActivity {
 
     private Button btnLike;
-    private TextView tvTitle,tvDetails, tvLike;
+    private TextView tvTitle, tvDetails, tvLike;
     private int numberOfLikes;
 
     @Override
@@ -39,7 +38,7 @@ public class ExperienceDetails extends AppCompatActivity {
 
         new JSONTaskGet().execute("http://skavtskiprirocnik.azurewebsites.net/api/experiences/" + ExperienceID);
 
-        btnLike = (Button)findViewById(R.id.btnLike);
+        btnLike = (Button) findViewById(R.id.btnLike);
         btnLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,26 +91,37 @@ public class ExperienceDetails extends AppCompatActivity {
 
 
         @Override
-        protected void onPostExecute(Experience result){
+        protected void onPostExecute(Experience result) {
             super.onPostExecute(result);
-            tvTitle = (TextView)findViewById(R.id.tvTitle);
-            tvDetails = (TextView)findViewById(R.id.tvDetails);
-            tvLike = (TextView)findViewById(R.id.tvLike);
-            if (result != null){
+            tvTitle = (TextView) findViewById(R.id.tvTitle);
+            tvDetails = (TextView) findViewById(R.id.tvDetails);
+            tvLike = (TextView) findViewById(R.id.tvLike);
+            if (result != null) {
                 tvTitle.setText(result.Title);
                 tvDetails.setText(result.Details);
                 numberOfLikes = result.Likes;
                 tvLike.setText("Število všečkov: " + Integer.toString(numberOfLikes));
-            }
-            else {
+            } else {
                 Toast toast = Toast.makeText(getApplicationContext(), "Napaka pri komunikaciji z strežnikom", Toast.LENGTH_SHORT);
                 toast.show();
             }
 
         }
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
-
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.info) {
+            Intent start = new Intent(ExperienceDetails.this, About.class);
+            startActivity(start);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

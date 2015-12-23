@@ -2,14 +2,17 @@ package com.example.zoki.skavt.Experiences;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.zoki.skavt.About;
 import com.example.zoki.skavt.R;
 
 import java.io.BufferedReader;
@@ -35,26 +38,25 @@ public class ExperienceLogin extends AppCompatActivity {
 
         IsLoggedIn = false;
 
-        etUsername = (EditText)findViewById(R.id.etUsername);
-        etPassword = (EditText)findViewById(R.id.etPassword);
-        tvInfo = (TextView)findViewById(R.id.tvInfoLogin);
+        etUsername = (EditText) findViewById(R.id.etUsername);
+        etPassword = (EditText) findViewById(R.id.etPassword);
+        tvInfo = (TextView) findViewById(R.id.tvInfoLogin);
 
-        Button btnLogin = (Button)findViewById(R.id.btnConfirm);
+        Button btnLogin = (Button) findViewById(R.id.btnConfirm);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 username = etUsername.getText().toString();
                 password = etPassword.getText().toString();
-                if (!username.isEmpty() && !password.isEmpty()){
+                if (!username.isEmpty() && !password.isEmpty()) {
                     new JSONTaskGet().execute("http://skavtskiprirocnik.azurewebsites.net/api/users/" + username + "/" + password);
-                }
-                else {
+                } else {
                     tvInfo.setText("Vpiši vse podatke");
                 }
             }
         });
 
-        Button btnRegister = (Button)findViewById(R.id.btnRegister);
+        Button btnRegister = (Button) findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +87,7 @@ public class ExperienceLogin extends AppCompatActivity {
                 }
                 return buffer.toString();
 
-            }catch (SocketTimeoutException e) {
+            } catch (SocketTimeoutException e) {
                 Toast toast = Toast.makeText(getApplicationContext(), "Napaka pri komunikaciji z strežnikom, preverite internetno povezavo", Toast.LENGTH_SHORT);
                 toast.show();
             } catch (MalformedURLException e) {
@@ -110,18 +112,33 @@ public class ExperienceLogin extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            if (result.equals("true")){
+            if (result.equals("true")) {
                 IsLoggedIn = true;
                 Intent intent = new Intent(ExperienceLogin.this, ExperienceMain.class);
                 intent.putExtra("USERNAME", username);
                 startActivity(intent);
-            }
-            else{
+            } else {
                 tvInfo.setText("Napačno uporabniško ime oz. geslo");
             }
 
 
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.info) {
+            Intent start = new Intent(ExperienceLogin.this, About.class);
+            startActivity(start);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

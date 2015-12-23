@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.zoki.skavt.About;
 import com.example.zoki.skavt.R;
 
 import org.json.JSONArray;
@@ -28,11 +31,12 @@ import java.util.ArrayList;
 
 public class ExperienceMain extends AppCompatActivity {
 
-    private ListView lvExperiences,lvMyExperiences;
+    private ListView lvExperiences, lvMyExperiences;
     private String username;
     private TextView tvUsername;
 
     private ArrayList<String> my_experience, experiences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +44,13 @@ public class ExperienceMain extends AppCompatActivity {
 
         Intent intent = getIntent();
         username = intent.getStringExtra("USERNAME");
-        tvUsername = (TextView)findViewById(R.id.tvUsername);
+        tvUsername = (TextView) findViewById(R.id.tvUsername);
         tvUsername.setText("Pozdravljen/a: " + username);
 
 
         new JSONTaskGet().execute("http://skavtskiprirocnik.azurewebsites.net/api/experiences");
 
-        Button btnNewExperience = (Button)findViewById(R.id.btnNewExperience);
+        Button btnNewExperience = (Button) findViewById(R.id.btnNewExperience);
         btnNewExperience.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +60,7 @@ public class ExperienceMain extends AppCompatActivity {
         });
 
 
-        lvExperiences = (ListView)findViewById(R.id.lvExperiences);
+        lvExperiences = (ListView) findViewById(R.id.lvExperiences);
         lvExperiences.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -66,7 +70,7 @@ public class ExperienceMain extends AppCompatActivity {
             }
         });
 
-        lvMyExperiences = (ListView)findViewById(R.id.lvMyExperiences);
+        lvMyExperiences = (ListView) findViewById(R.id.lvMyExperiences);
         lvMyExperiences.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -76,7 +80,6 @@ public class ExperienceMain extends AppCompatActivity {
             }
         });
     }
-
 
 
     public class JSONTaskGet extends AsyncTask<String, Void, ArrayList<String>> {
@@ -109,8 +112,8 @@ public class ExperienceMain extends AppCompatActivity {
                         String title = odgovor.getString("Title");
                         String author = odgovor.getString("Author");
                         String likes = Integer.toString(odgovor.getInt("Likes"));
-                        experiences.add(i, title + "\n" +  "Avtor: " + author + ",  " + "Všečki: " + likes);
-                        if(author.equals(username)){
+                        experiences.add(i, title + "\n" + "Avtor: " + author + ",  " + "Všečki: " + likes);
+                        if (author.equals(username)) {
                             my_experience.add(title + ",  " + "Všečki: " + likes);
                         }
                     } catch (JSONException e) {
@@ -147,16 +150,31 @@ public class ExperienceMain extends AppCompatActivity {
             ArrayAdapter adapter_all = new ArrayAdapter<String>(ExperienceMain.this, R.layout.row_list, result);
             ArrayAdapter adapter_my = new ArrayAdapter<String>(ExperienceMain.this, R.layout.row_list, my_experience);
 
-            if (result !=null && lvMyExperiences !=null){
+            if (result != null && lvMyExperiences != null) {
                 lvExperiences.setAdapter(adapter_all);
                 lvMyExperiences.setAdapter(adapter_my);
-            }
-            else {
+            } else {
                 Toast toast = Toast.makeText(getApplicationContext(), "Napaka pri komunikaciji z strežnikom", Toast.LENGTH_SHORT);
                 toast.show();
 
             }
 
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.info) {
+            Intent start = new Intent(ExperienceMain.this, About.class);
+            startActivity(start);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

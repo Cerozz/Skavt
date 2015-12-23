@@ -10,63 +10,63 @@
     tools:context="com.example.zoki.skavt.Experiences.ExperienceMain">
 
     <TextView
+        android:id="@+id/tvKategorije"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Seznam izkušenj"
-        android:id="@+id/tvKategorije"
-        android:layout_above="@+id/lvExperiences"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@+id/tvUsername"
         android:layout_alignParentStart="true" />
 
     <ListView
+        android:id="@+id/lvExperiences"
         android:layout_width="match_parent"
         android:layout_height="156dp"
-        android:id="@+id/lvExperiences"
         android:layout_gravity="center_horizontal"
         android:choiceMode="singleChoice"
-        android:layout_above="@+id/tvMyExperiences"
+        android:layout_below="@+id/tvKategorije"
         android:layout_alignParentStart="true" />
 
     <Button
+        android:id="@+id/btnNewExperience"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Objavi novo izkušnjo"
-        android:id="@+id/btnNewExperience"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:text="Objavi novo izkušnjo" />
 
     <TextView
+        android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/tvUsername"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
         android:layout_below="@+id/tvKategorije"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp" />
 
     <TextView
+        android:id="@+id/tvMyExperiences"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Moje izkušnje"
-        android:id="@+id/tvMyExperiences"
+        android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:text="Moje izkušnje"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ListView
+        android:id="@+id/lvMyExperiences"
         android:layout_width="match_parent"
         android:layout_height="156dp"
-        android:id="@+id/lvMyExperiences"
-        android:layout_gravity="center_horizontal"
-        android:choiceMode="singleChoice"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/tvMyExperiences"
-        android:layout_alignParentStart="true" />
+        android:layout_gravity="center_horizontal"
+        android:choiceMode="singleChoice" />
 
 </RelativeLayout>
