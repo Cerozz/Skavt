@@ -19,24 +19,26 @@
         android:text="Prijavi" />
 
     <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnConfirm"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:ems="10"
-        android:hint="Geslo"
-        android:inputType="textPassword" />
-
-    <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/etPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:hint="Janez007"
+        android:inputType="text" />
+
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnConfirm"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="29dp"
-        android:hint="Uporabniško ime" />
+        android:hint="****"
+        android:inputType="textPassword" />
 
     <TextView
         android:id="@+id/tvInfoLogin"
@@ -48,22 +50,22 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
+        android:id="@+id/tvLabelPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etPassword"
+        android:layout_alignParentStart="true"
+        android:text="Geslo"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000" />
+
+    <TextView
         android:id="@+id/tvLabelUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/etUsername"
         android:layout_alignParentStart="true"
         android:text="Uporabniško ime:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000000" />
-
-    <TextView
-        android:id="@+id/tvLabelPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/etPassword"
-        android:layout_alignParentStart="true"
-        android:text="Geslo:"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#000000" />
 

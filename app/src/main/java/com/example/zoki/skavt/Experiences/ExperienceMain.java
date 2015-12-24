@@ -16,10 +16,8 @@ import android.widget.Toast;
 
 import com.example.zoki.skavt.About;
 import com.example.zoki.skavt.R;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,6 +26,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExperienceMain extends AppCompatActivity {
 
@@ -35,7 +34,7 @@ public class ExperienceMain extends AppCompatActivity {
     private String username;
     private TextView tvUsername;
 
-    private ArrayList<String> my_experience, experiences;
+    private ArrayList<Experience> my_experience, experiences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +64,8 @@ public class ExperienceMain extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ExperienceMain.this, ExperienceDetails.class);
-                intent.putExtra("POSITION", Integer.toString(position));
+                Experience ex = (Experience)parent.getItemAtPosition(position);
+                intent.putExtra("POSITION", Integer.toString(ex.ExperienceID));
                 startActivity(intent);
             }
         });
@@ -82,10 +82,10 @@ public class ExperienceMain extends AppCompatActivity {
     }
 
 
-    public class JSONTaskGet extends AsyncTask<String, Void, ArrayList<String>> {
+    public class JSONTaskGet extends AsyncTask<String, Void, ArrayList<Experience>> {
 
         @Override
-        protected ArrayList<String> doInBackground(String... params) {
+        protected ArrayList<Experience> doInBackground(String... params) {
             HttpURLConnection connection = null;
             BufferedReader reader = null;
 
@@ -103,31 +103,13 @@ public class ExperienceMain extends AppCompatActivity {
                 }
                 String finalJson = buffer.toString();
 
-                JSONArray finalObject = new JSONArray(finalJson);
-                experiences = new ArrayList<>();
-                my_experience = new ArrayList<>();
-                for (int i = 0; i < finalObject.length(); i++) {
-                    try {
-                        JSONObject odgovor = finalObject.getJSONObject(i);
-                        String title = odgovor.getString("Title");
-                        String author = odgovor.getString("Author");
-                        String likes = Integer.toString(odgovor.getInt("Likes"));
-                        experiences.add(i, title + "\n" + "Avtor: " + author + ",  " + "Všečki: " + likes);
-                        if (author.equals(username)) {
-                            my_experience.add(title + ",  " + "Všečki: " + likes);
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                final Gson gson = new Gson();
 
-                }
-                return experiences;
+                experiences = gson.fromJson(finalJson, new TypeToken<List<Experience>>(){}.getType());
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
                 e.printStackTrace();
             } finally {
                 if (connection != null)
@@ -139,26 +121,23 @@ public class ExperienceMain extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-            return null;
+            return experiences;
         }
 
 
         @Override
-        protected void onPostExecute(ArrayList<String> result) {
+        protected void onPostExecute(ArrayList<Experience> result) {
             super.onPostExecute(result);
 
-            ArrayAdapter adapter_all = new ArrayAdapter<String>(ExperienceMain.this, R.layout.row_list, result);
-            ArrayAdapter adapter_my = new ArrayAdapter<String>(ExperienceMain.this, R.layout.row_list, my_experience);
-
-            if (result != null && lvMyExperiences != null) {
-                lvExperiences.setAdapter(adapter_all);
-                lvMyExperiences.setAdapter(adapter_my);
+            if (result != null) {
+                ListView lvExperiences = (ListView) findViewById(R.id.lvExperiences);
+                ExperienceAdapter adapter = new ExperienceAdapter(ExperienceMain.this,result);
+                lvExperiences.setAdapter(adapter);
             } else {
                 Toast toast = Toast.makeText(getApplicationContext(), "Napaka pri komunikaciji z strežnikom", Toast.LENGTH_SHORT);
                 toast.show();
 
             }
-
         }
     }
 

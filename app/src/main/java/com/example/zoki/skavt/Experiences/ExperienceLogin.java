@@ -36,10 +36,12 @@ public class ExperienceLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experience_login);
 
+
         IsLoggedIn = false;
 
-        etUsername = (EditText) findViewById(R.id.etUsername);
-        etPassword = (EditText) findViewById(R.id.etPassword);
+        etUsername = (EditText) findViewById(R.id.etPassword);
+        etPassword = (EditText) findViewById(R.id.etUsername);
+
         tvInfo = (TextView) findViewById(R.id.tvInfoLogin);
 
         Button btnLogin = (Button) findViewById(R.id.btnConfirm);
