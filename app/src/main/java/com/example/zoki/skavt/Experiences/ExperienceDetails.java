@@ -97,11 +97,9 @@ public class ExperienceDetails extends AppCompatActivity {
             tvDetails = (TextView) findViewById(R.id.tvDetails);
             tvLike = (TextView) findViewById(R.id.tvLike);
             tvAuthor = (TextView)findViewById(R.id.tvAuthor);
-            tvCategory = (TextView)findViewById(R.id.tvCategory);
             if (result != null) {
                 tvTitle.setText(result.Title);
                 tvAuthor.setText("Avtor: " + result.Author);
-                tvCategory.setText("Kategorija: " + result.CatID);
                 tvDetails.setText(result.Details);
                 numberOfLikes = result.Likes;
                 tvLike.setText("Število všečkov: " + Integer.toString(numberOfLikes));
