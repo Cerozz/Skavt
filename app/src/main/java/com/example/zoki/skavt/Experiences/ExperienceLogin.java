@@ -15,6 +15,9 @@ import android.widget.Toast;
 import com.example.zoki.skavt.About;
 import com.example.zoki.skavt.R;
 
+import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.codec.digest.DigestUtils;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -49,7 +52,8 @@ public class ExperienceLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 username = etUsername.getText().toString();
-                password = etPassword.getText().toString();
+                password = new String(Hex.encodeHex(DigestUtils.sha256(etPassword.getText().toString())));
+
                 if (!username.isEmpty() && !password.isEmpty()) {
                     new JSONTaskGet().execute("http://skavtskiprirocnik.azurewebsites.net/api/users/" + username + "/" + password);
                 } else {
