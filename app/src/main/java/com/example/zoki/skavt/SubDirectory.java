@@ -9,18 +9,78 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class SubDirectory extends AppCompatActivity {
+
+    String[] ime, opis;
+    int[] slike;
+
+    ArrayList<Vsebina> vsebina = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subdirectory);
-        setTitle(getIntent().getExtras().getString("ime"));
-        String[] poglavja = {"Osmica", "Example 1", "Example 2", "Example 3", "Example 4", "Example 5"};
-        String[] opis = {"_ je koristen za _", "_ je koristen za _", "_ je koristen za _", "_ je koristen za _", "_ je koristen za _", "_ je koristen za _"};
-        int[] slike = {R.drawable.rope, R.drawable.rope, R.drawable.rope, R.drawable.rope, R.drawable.rope, R.drawable.rope};
-        ListAdapter adapter = new Adapter(this, poglavja, slike, opis);
+        String title = getIntent().getExtras().getString("ime");
+        setTitle(title);
+
+        if(title.equals("Vozli")){
+            vsebina = new Vsebina().getVozli();
+
+            int st_vozlov = vsebina.size();
+            ime = new String[st_vozlov];
+            opis = new String[st_vozlov];
+            slike = new int[st_vozlov];
+
+            for(int i = 0; i < st_vozlov;i++){
+                ime[i] = vsebina.get(i).ime;
+                opis[i] = vsebina.get(i).opis;
+                slike[i] = vsebina.get(i).slika;
+            }
+        }
+        else if (title.equals("Ognji"))
+        {
+            vsebina = new Vsebina().getOgnji();
+
+            int st_ognjev = vsebina.size();
+            ime = new String[st_ognjev];
+            opis = new String[st_ognjev];
+            slike = new int[st_ognjev];
+
+            for(int i = 0; i < st_ognjev;i++){
+                ime[i] = vsebina.get(i).ime;
+                opis[i] = vsebina.get(i).opis;
+                slike[i] = vsebina.get(i).slika;
+            }
+        }
+        else if (title.equals("Orientacija"))
+        {
+            vsebina = new Vsebina().getOrientacije();
+
+            int st_orientacij = vsebina.size();
+            ime = new String[st_orientacij];
+            opis = new String[st_orientacij];
+            slike = new int[st_orientacij];
+
+            for(int i = 0; i < st_orientacij;i++){
+                ime[i] = vsebina.get(i).ime;
+                opis[i] = vsebina.get(i).opis;
+                slike[i] = vsebina.get(i).slika;
+            }
+        }
+        else if (title.equals("Zavetje")){
+            Toast toast = Toast.makeText(getApplicationContext(), "ni še implementirano", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        else if (title.equals("Nasveti")){
+            Toast toast = Toast.makeText(getApplicationContext(), "ni še implementirano", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
+        ListAdapter adapter = new Adapter_contentmenu(this, ime, slike);
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
@@ -28,11 +88,9 @@ public class SubDirectory extends AppCompatActivity {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String ime = String.valueOf(parent.getItemAtPosition(position));
+                        Vsebina vs = vsebina.get(position);
                         Intent start = new Intent(SubDirectory.this, Element.class);
-                        Bundle extra = new Bundle();
-                        extra.putString("ime", ime);
-                        start.putExtras(extra);
+                        start.putExtra("Vsebina", vs);
                         startActivity(start);
                     }
                 }

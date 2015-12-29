@@ -5,13 +5,28 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 
 public class Element extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_element);
-        setTitle(getIntent().getExtras().getString("ime"));
+        Vsebina vsebina = (Vsebina) getIntent().getSerializableExtra("Vsebina");
+        setTitle(vsebina.ime);
+
+        if (vsebina.uporaba != null){
+            TextView tvUporaba = (TextView)findViewById(R.id.tvUporaba);
+            tvUporaba.setText(vsebina.uporaba);
+        }
+
+        TextView tvOpis = (TextView)findViewById(R.id.tvOpis);
+        tvOpis.setText(vsebina.opis);
+
+        ImageView ivSlika = (ImageView)findViewById(R.id.ivSlika);
+        ivSlika.setImageResource(vsebina.slika);
     }
 
     @Override
