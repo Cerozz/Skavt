@@ -35,13 +35,6 @@ public class ExperienceCreate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experience_create);
 
-        //dropdown za izbiranje
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.categories_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
         Button postExperience = (Button) findViewById(R.id.btnPostExperience);
         postExperience.setOnClickListener(new View.OnClickListener() {
             @Override

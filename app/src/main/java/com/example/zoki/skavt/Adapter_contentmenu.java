@@ -9,24 +9,26 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Adapter_contentmenu extends ArrayAdapter<String> {
+import java.util.ArrayList;
 
-    private final int[] slike;
+public class Adapter_contentmenu extends ArrayAdapter<Vsebina> {
 
-    public Adapter_contentmenu(Context context, String[] ime, int[] slike) {
-        super(context, R.layout.row, ime);
-        this.slike = slike;
+    private final ArrayList<Vsebina> vsebina_list;
+
+    public Adapter_contentmenu(Context context, ArrayList<Vsebina> vsebina_list) {
+        super(context, R.layout.row, vsebina_list);
+        this.vsebina_list = vsebina_list;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inf = LayoutInflater.from(getContext());
         View customView = inf.inflate(R.layout.row, parent, false);
-        String ime = getItem(position);
+        Vsebina vsebina = vsebina_list.get(position);
         TextView text = (TextView) customView.findViewById(R.id.textView);
         ImageView slika = (ImageView) customView.findViewById(R.id.imageView);
-        text.setText(ime);
-        slika.setImageResource(slike[position]);
+        text.setText(vsebina.ime);
+        slika.setImageResource(vsebina.slika);
         return customView;
     }
 }

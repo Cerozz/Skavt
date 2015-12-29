@@ -25,7 +25,8 @@
         android:layout_gravity="center_horizontal"
         android:choiceMode="singleChoice"
         android:layout_below="@+id/tvKategorije"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/btnNewExperience" />
 
     <Button
         android:id="@+id/btnNewExperience"
@@ -50,23 +51,5 @@
         android:layout_below="@+id/tvKategorije"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp" />
-
-    <TextView
-        android:id="@+id/tvMyExperiences"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:text="Moje izkušnje"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <ListView
-        android:id="@+id/lvMyExperiences"
-        android:layout_width="match_parent"
-        android:layout_height="156dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tvMyExperiences"
-        android:layout_gravity="center_horizontal"
-        android:choiceMode="singleChoice" />
 
 </RelativeLayout>

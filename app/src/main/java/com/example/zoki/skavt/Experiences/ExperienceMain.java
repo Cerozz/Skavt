@@ -70,15 +70,6 @@ public class ExperienceMain extends AppCompatActivity {
             }
         });
 
-        lvMyExperiences = (ListView) findViewById(R.id.lvMyExperiences);
-        lvMyExperiences.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ExperienceMain.this, ExperienceDetails.class);
-                intent.putExtra("POSITION", Integer.toString(position));
-                startActivity(intent);
-            }
-        });
     }
 
 

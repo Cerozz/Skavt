@@ -29,47 +29,14 @@ public class SubDirectory extends AppCompatActivity {
 
         if(title.equals("Vozli")){
             vsebina = new Vsebina().getVozli();
-
-            int st_vozlov = vsebina.size();
-            ime = new String[st_vozlov];
-            opis = new String[st_vozlov];
-            slike = new int[st_vozlov];
-
-            for(int i = 0; i < st_vozlov;i++){
-                ime[i] = vsebina.get(i).ime;
-                opis[i] = vsebina.get(i).opis;
-                slike[i] = vsebina.get(i).slika;
-            }
         }
         else if (title.equals("Ognji"))
         {
             vsebina = new Vsebina().getOgnji();
-
-            int st_ognjev = vsebina.size();
-            ime = new String[st_ognjev];
-            opis = new String[st_ognjev];
-            slike = new int[st_ognjev];
-
-            for(int i = 0; i < st_ognjev;i++){
-                ime[i] = vsebina.get(i).ime;
-                opis[i] = vsebina.get(i).opis;
-                slike[i] = vsebina.get(i).slika;
-            }
         }
         else if (title.equals("Orientacija"))
         {
             vsebina = new Vsebina().getOrientacije();
-
-            int st_orientacij = vsebina.size();
-            ime = new String[st_orientacij];
-            opis = new String[st_orientacij];
-            slike = new int[st_orientacij];
-
-            for(int i = 0; i < st_orientacij;i++){
-                ime[i] = vsebina.get(i).ime;
-                opis[i] = vsebina.get(i).opis;
-                slike[i] = vsebina.get(i).slika;
-            }
         }
         else if (title.equals("Zavetje")){
             Toast toast = Toast.makeText(getApplicationContext(), "ni še implementirano", Toast.LENGTH_SHORT);
@@ -80,7 +47,7 @@ public class SubDirectory extends AppCompatActivity {
             toast.show();
         }
 
-        ListAdapter adapter = new Adapter_contentmenu(this, ime, slike);
+        ListAdapter adapter = new Adapter_contentmenu(this, vsebina);
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
