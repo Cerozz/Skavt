@@ -26,8 +26,10 @@ public class Adapter_contentmenu extends ArrayAdapter<Vsebina> {
         View customView = inf.inflate(R.layout.row, parent, false);
         Vsebina vsebina = vsebina_list.get(position);
         TextView text = (TextView) customView.findViewById(R.id.textView);
+        TextView difficulty = (TextView) customView.findViewById(R.id.tvDifficulty);
         ImageView slika = (ImageView) customView.findViewById(R.id.imageView);
         text.setText(vsebina.ime);
+        difficulty.setText("Zahtevnost: " + vsebina.zahtevnost);
         slika.setImageResource(vsebina.slika);
         return customView;
     }

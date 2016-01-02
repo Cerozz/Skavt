@@ -22,6 +22,9 @@ public class Element extends AppCompatActivity {
             tvUporaba.setText(vsebina.uporaba);
         }
 
+        TextView tvZahtevnost = (TextView)findViewById(R.id.tvElementDifficulty);
+        tvZahtevnost.setText("Zahtevnost: " + vsebina.zahtevnost);
+
         TextView tvOpis = (TextView)findViewById(R.id.tvOpis);
         tvOpis.setText(vsebina.opis);
 
