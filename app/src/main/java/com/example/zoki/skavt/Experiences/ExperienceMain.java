@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.zoki.skavt.About;
+import com.example.zoki.skavt.MainActivity;
 import com.example.zoki.skavt.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -66,6 +67,18 @@ public class ExperienceMain extends AppCompatActivity {
                 Intent intent = new Intent(ExperienceMain.this, ExperienceDetails.class);
                 Experience ex = (Experience)parent.getItemAtPosition(position);
                 intent.putExtra("POSITION", Integer.toString(ex.ExperienceID));
+                startActivity(intent);
+            }
+        });
+
+        Button btnLogout = (Button) findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MojSkavt loginName = (MojSkavt) getApplicationContext();
+                loginName.setLoginName(null);
+
+                Intent intent = new Intent(ExperienceMain.this, MainActivity.class);
                 startActivity(intent);
             }
         });

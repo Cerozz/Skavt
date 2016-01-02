@@ -1,5 +1,6 @@
 package com.example.zoki.skavt.Experiences;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -31,16 +32,11 @@ public class ExperienceLogin extends AppCompatActivity {
     private EditText etUsername, etPassword;
     private TextView tvInfo;
     private String username, password;
-    private Boolean IsLoggedIn;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experience_login);
-
-
-        IsLoggedIn = false;
 
         etUsername = (EditText) findViewById(R.id.etPassword);
         etPassword = (EditText) findViewById(R.id.etUsername);
@@ -70,6 +66,15 @@ public class ExperienceLogin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        MojSkavt globalVariable = (MojSkavt) getApplicationContext();
+        String loginName = globalVariable.getLoginName();
+
+        if (loginName != null){
+            Intent intent = new Intent(ExperienceLogin.this, ExperienceMain.class);
+            intent.putExtra("USERNAME", loginName);
+            startActivity(intent);
+        }
     }
 
     public class JSONTaskGet extends AsyncTask<String, Void, String> {
@@ -119,7 +124,9 @@ public class ExperienceLogin extends AppCompatActivity {
             super.onPostExecute(result);
 
             if (result.equals("true")) {
-                IsLoggedIn = true;
+                MojSkavt loginName = (MojSkavt) getApplicationContext();
+                loginName.setLoginName(username);
+
                 Intent intent = new Intent(ExperienceLogin.this, ExperienceMain.class);
                 intent.putExtra("USERNAME", username);
                 startActivity(intent);
