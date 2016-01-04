@@ -28,8 +28,10 @@ public class Element extends AppCompatActivity {
         TextView tvOpis = (TextView)findViewById(R.id.tvOpis);
         tvOpis.setText(vsebina.opis);
 
-        ImageView ivSlika = (ImageView)findViewById(R.id.ivSlika);
-        ivSlika.setImageResource(vsebina.slika);
+        if (vsebina.slika != 0) {
+            ImageView ivSlika = (ImageView) findViewById(R.id.ivSlika);
+            ivSlika.setImageResource(vsebina.slika);
+        }
     }
 
     @Override

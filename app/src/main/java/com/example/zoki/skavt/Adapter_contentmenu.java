@@ -30,7 +30,9 @@ public class Adapter_contentmenu extends ArrayAdapter<Vsebina> {
         ImageView slika = (ImageView) customView.findViewById(R.id.imageView);
         text.setText(vsebina.ime);
         difficulty.setText("Zahtevnost: " + vsebina.zahtevnost);
-        slika.setImageResource(vsebina.slika);
+        if(vsebina.slika > 0) {
+            slika.setImageResource(vsebina.slika);
+        }
         return customView;
     }
 }
