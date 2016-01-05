@@ -33,7 +33,6 @@ public class Vsebina implements Serializable{
         this.ime = ime;
         this.opis = opis;
         this.uporaba = uporaba;
-        this.slika = slika;
         this.zahtevnost = zahtevnost;
     }
 
@@ -187,5 +186,48 @@ public class Vsebina implements Serializable{
                 "poljubno",
                 R.drawable.zavetje_ostalo));
         return zavetje;
+    }
+
+    public ArrayList<Vsebina> getNasveti() {
+        ArrayList<Vsebina> nasveti = new ArrayList<>();
+        nasveti.add(new Vsebina("Sledovi živali",
+                "",
+                "",
+                "***",
+                R.drawable.nasveti_sledi));
+        nasveti.add(new Vsebina("Listi dreves",
+                "-smreka:  Iglice so dolge od 10-25 milimetrov, ter so ravne. Na koncu vej rastejo spodaj podolgovati storži, ki so obrnjeni navzdol.\n" +
+                        "-jelka: Iglice so dolge 15 - 30 mm, razporejene v dveh vrstah, ploske, zgoraj bleščeče temno zelene, spodaj z dvema belima progama. Storži rastejo navzgor, dolgi 10 - 16 cm in razpadejo na drevesu.\n" +
+                        "\n" +
+                        "-bukev: Listi so enostavni, celorobi in bleščeče zeleni, dolžine od 5-12 cm in širine od 3-8 cm, s 5-9 parov listnih žil. ima plodove imenovane žir. To so majhne kroglice, ki imajo dlačice, majhne bodičke in so rjave barve.\n" +
+                        "-hrast: Listi imajo navadno priostrene konice režnjev s ščetinami.  Cvetove, ki se razvijejo spomladi, imenujemo mačice. Plod, ki ga imenujemo želod, je orešek in zraste v čašasti strukturi, imenovani kapica.\n" +
+                        "-lipa: Listi: srčaste oblike, pecljati, dolgi nad 8 cm. Plod: majhni oreški s pecljem, ki se konča s krilcem; pokriti so z debelo lupino, ki ima pet močno vidnih robov\n" +
+                        "-breza:  Poznamo jo po beli skorji. Enostavni listi so lahko nažagani ali režnjati. Plod breze je krilati orešek, ki pa ima pri nekaterih vrsta zelo drobna krilca.\n",
+                "",
+                "***"
+                ));
+        nasveti.add(new Vsebina("Prva pomoč",
+                "Opis: Opekline:\n" +
+                        "- rano hladimo s hladno vodo, ki blaži bolečino in preprečuje nadaljnje poškodbe. Na rano ne dajemo ledu.\n" +
+                        "- na rano ne dajemo ledu\n" +
+                        "-rane ne mažemo z mazili\n" +
+                        "Žulji:\n" +
+                        "- če nas ožuli, je pomembno, da se čim prej preobujemo\n" +
+                        "- pribor za oskrbo naj bo sterilen\n" +
+                        "-manjše žulje premažemo z ustreznim mazilom in prekrijemo z obližem\n" +
+                        "- večje in moteče žulje predremo z iglo, ki jo pred tem očistimo z medicinskim alkoholom, ter jo za nekaj sekund držimo nad vročim ognjem. Preboden žulj prekrijemo s sterilno gazo\n" +
+                        "Rane in krvavitve:\n" +
+                        "- vedno imamo čiste roke in pripomočke\n" +
+                        "-  površinske rane izpiramo s tekočo vodo in prekrijemo s sterilno gazo ali obližem\n" +
+                        "-  če iz rane krvavi zaustavimo prekrvavitev s kompresijsko obvezo ali neposrednim pritiskom s prsti preko gaze\n" +
+                        "- ranjeni del telesa ali ud mora mirovati\n" +
+                        "Piki žuželk:\n" +
+                        "- če je pri piku čebele v koži ostalo želo, ga odstranimo\n" +
+                        "- pik speremo pod tekočo vodo, osušimo in pohladimo z ledom. Ledu ne dajemo neposredno na kožo\n" +
+                        "- nanesemo gel za oskrbo kože po pikih\n" +
+                        "- v primeru alergijske reakcije moramo imeti ob sebi ustrezno zdravo\n",
+                "Uporaba: v vseh letnih časih. Je manjše velikosti in običajno namenjen eni osebi.",
+                "***"));
+        return nasveti;
     }
 }

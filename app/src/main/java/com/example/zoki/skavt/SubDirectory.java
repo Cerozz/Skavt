@@ -42,8 +42,7 @@ public class SubDirectory extends AppCompatActivity {
             vsebina = new Vsebina().getZavetje();
         }
         else if (title.equals("Nasveti")){
-            Toast toast = Toast.makeText(getApplicationContext(), "ni še implementirano", Toast.LENGTH_SHORT);
-            toast.show();
+            vsebina = new Vsebina().getNasveti();
         }
 
         ListAdapter adapter = new Adapter_contentmenu(this, vsebina);
