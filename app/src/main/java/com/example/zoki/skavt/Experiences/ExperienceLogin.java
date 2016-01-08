@@ -1,6 +1,5 @@
 package com.example.zoki.skavt.Experiences;
 
-import android.app.Application;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -70,7 +69,7 @@ public class ExperienceLogin extends AppCompatActivity {
         MojSkavt globalVariable = (MojSkavt) getApplicationContext();
         String loginName = globalVariable.getLoginName();
 
-        if (loginName != null){
+        if (loginName != null) {
             Intent intent = new Intent(ExperienceLogin.this, ExperienceMain.class);
             intent.putExtra("USERNAME", loginName);
             startActivity(intent);

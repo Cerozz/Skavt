@@ -3,7 +3,7 @@ package com.example.zoki.skavt;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Vsebina implements Serializable{
+public class Vsebina implements Serializable {
 
     public String ime;
     public String opis;
@@ -21,7 +21,7 @@ public class Vsebina implements Serializable{
         this.zahtevnost = zahtevnost;
     }
 
-    public Vsebina(String ime, String opis, String uporaba,String zahtevnost,int slika) {
+    public Vsebina(String ime, String opis, String uporaba, String zahtevnost, int slika) {
         this.ime = ime;
         this.opis = opis;
         this.uporaba = uporaba;
@@ -29,7 +29,7 @@ public class Vsebina implements Serializable{
         this.zahtevnost = zahtevnost;
     }
 
-    public Vsebina(String ime, String opis, String uporaba,String zahtevnost) {
+    public Vsebina(String ime, String opis, String uporaba, String zahtevnost) {
         this.ime = ime;
         this.opis = opis;
         this.uporaba = uporaba;
@@ -40,31 +40,31 @@ public class Vsebina implements Serializable{
     public ArrayList<Vsebina> getVozli() {
         ArrayList<Vsebina> vozli = new ArrayList<>();
         vozli.add(new Vsebina("Ambulantni",
-                        "OPIS:  sestavljen je iz dveh polvozlov.Se ne zatika in zato ga tudi preprosto odvežemo. Je zelo enostaven in močno drži. Če so vrvi gladke, raje uporabimo ribiški ali podaljševalni vozel.\n\n",
-                        "UPORABA: pri prvi pomoči(fiksiranje zlomljenega uda, zavezovanje s trikotno ruto), pri podaljševanju dveh krajši vrvi, a samo v primeru, da sta enako debeli, ustvarjanje zanke\n",
-                        "***",
-                        R.drawable.vozel_ambulanti));
+                "OPIS:  sestavljen je iz dveh polvozlov.Se ne zatika in zato ga tudi preprosto odvežemo. Je zelo enostaven in močno drži. Če so vrvi gladke, raje uporabimo ribiški ali podaljševalni vozel.\n\n",
+                "UPORABA: pri prvi pomoči(fiksiranje zlomljenega uda, zavezovanje s trikotno ruto), pri podaljševanju dveh krajši vrvi, a samo v primeru, da sta enako debeli, ustvarjanje zanke\n",
+                "***",
+                R.drawable.vozel_ambulanti));
         vozli.add(new Vsebina("Bičev",
-                        "je boljši od kavbojskega, ker se pri enostranski obremenitvi zateguje in ne drsi. Vsebina se lahko tudi vplete.\n\n",
-                         "UPORABA: v alpinizmu za privezovanje na karabin, za pritrjevanje vrvi na drog, za postavljanje šotora\n",
-                        "**",
-                        R.drawable.vozel_bicev));
+                "je boljši od kavbojskega, ker se pri enostranski obremenitvi zateguje in ne drsi. Vsebina se lahko tudi vplete.\n\n",
+                "UPORABA: v alpinizmu za privezovanje na karabin, za pritrjevanje vrvi na drog, za postavljanje šotora\n",
+                "**",
+                R.drawable.vozel_bicev));
         vozli.add(new Vsebina("Osmica",
-                         "OPIS: Osmico lahko izdelamo kot osnovno ali kot vpleteno. Primerna je predvsem za varovanje v gorah.\n\n",
-                         "UPORABA: spust ob vrvi pri zimski tehniki, pri izdelovanju škripčevja, vrvna ograja, vmesni vozli pri ledeniškem navezovanju\n",
-                        "**",
-                        R.drawable.vozel_osmica));
+                "OPIS: Osmico lahko izdelamo kot osnovno ali kot vpleteno. Primerna je predvsem za varovanje v gorah.\n\n",
+                "UPORABA: spust ob vrvi pri zimski tehniki, pri izdelovanju škripčevja, vrvna ograja, vmesni vozli pri ledeniškem navezovanju\n",
+                "**",
+                R.drawable.vozel_osmica));
         vozli.add(new Vsebina("Podaljševalni",
-                         "OPIS: služi povezovanju dveh vrvi, ali pa ene same vrvice, da tako dobimo neskončno zanka. Priporočljiva je izdelava s trojnim ovojem.\n\n",
-                         "UPORABA: kadar imamo dve prekratki vrvi, kadar želimo dve vrvi povezati. \n",
-                        "****",
-                        R.drawable.vozel_podaljsevalni));
+                "OPIS: služi povezovanju dveh vrvi, ali pa ene same vrvice, da tako dobimo neskončno zanka. Priporočljiva je izdelava s trojnim ovojem.\n\n",
+                "UPORABA: kadar imamo dve prekratki vrvi, kadar želimo dve vrvi povezati. \n",
+                "****",
+                R.drawable.vozel_podaljsevalni));
 
         vozli.add(new Vsebina("Prusikov",
-                         "OPIS: Spada med drsne vozle. Pri obremenitvi se zateguje, če ga razbremenimo, pa ga lahko pomikamo po vrvi, drogu,…  Naredimo ga s tanjšo vrvico na debelejši. Prusikov vozel drži v obe smeri.\n",
-                         "UPORABA: samoreševanje, samovarovanje pri spustu ob vrvi\n",
-                        "****",
-                         R.drawable.vozel_prusikov));
+                "OPIS: Spada med drsne vozle. Pri obremenitvi se zateguje, če ga razbremenimo, pa ga lahko pomikamo po vrvi, drogu,…  Naredimo ga s tanjšo vrvico na debelejši. Prusikov vozel drži v obe smeri.\n",
+                "UPORABA: samoreševanje, samovarovanje pri spustu ob vrvi\n",
+                "****",
+                R.drawable.vozel_prusikov));
 
         return vozli;
     }
@@ -102,7 +102,7 @@ public class Vsebina implements Serializable{
                         "- smeri neba\n" +
                         "- orientiramo topografsko karto\n" +
                         "- smerni kot ali azimut in razdaljo poljubni točki na območju\n\n " +
-                "UPORABA: kompas ima magnetno iglo, ki se vedno obrne proti magnetnemu severu. Ta nekoliko odstopa od dejanskega geografskega severa, vendar odstopanje ni veliko. Pazljivi moramo biti na oznake na kompasu. Če so oznake angleške (N, E, S, W), je sever označen s črko N. " +
+                        "UPORABA: kompas ima magnetno iglo, ki se vedno obrne proti magnetnemu severu. Ta nekoliko odstopa od dejanskega geografskega severa, vendar odstopanje ni veliko. Pazljivi moramo biti na oznake na kompasu. Če so oznake angleške (N, E, S, W), je sever označen s črko N. " +
                         "Če so oznake slovenske(S, V, J, Z), sever označuje črka S. Na smer igle lahko vplivajo tudi druga magnetna polja, ki jih povzročajo daljnovodi, električni aparati in kovinski predmeti. Poskrbeti moramo, da teh stvari ni v bližini.\n",
                 "**",
                 R.drawable.orientacija_kompas));
@@ -120,7 +120,7 @@ public class Vsebina implements Serializable{
                 R.drawable.orientacija_luna));
         orientacije.add(new Vsebina("Navigacija ostalo",
                 " podnevi si lahko pomagamo s Soncem. Sonce je opoldne najvišje na obzorju. Senca je takrat najkrajša in kaže proti severu.\n" +
-                "- drevesna debla so na severu bolj poraščena z mahom\n" +
+                        "- drevesna debla so na severu bolj poraščena z mahom\n" +
                         "- razmiki med letnicami na štorih so proti severu manjši\n" +
                         "- krošnje dreves so proti jugu bolj bujne\n" +
                         "- mravljišča so proti jugu položnejša\n" +
@@ -145,28 +145,28 @@ public class Vsebina implements Serializable{
                 R.drawable.zavetje_sneznaluknja));
         zavetje.add(new Vsebina("Snežna koča",
                 "Opis: izkopljemo dovolj veliko luknjo, da bomo v njej lahko sedeli. Luknjo izkopljemo tako, da bomo v " +
-                "njej imeli improvizirano klop. Če je snega dovolj, naj bo streha iz snega, drugače nanjo položimo veje" +
-                "ali šotorko.  Na vrhu vedno naredimo luknjo v premeru vsaj 10 centimetrov, ki je namenjena" +
-                "zračenju. Na koncu dodelajte še vhod. Pustite vhodno luknjo čim manjšo in s tem zmanjšajte izgubo"+
-                "toplote.",
+                        "njej imeli improvizirano klop. Če je snega dovolj, naj bo streha iz snega, drugače nanjo položimo veje" +
+                        "ali šotorko.  Na vrhu vedno naredimo luknjo v premeru vsaj 10 centimetrov, ki je namenjena" +
+                        "zračenju. Na koncu dodelajte še vhod. Pustite vhodno luknjo čim manjšo in s tem zmanjšajte izgubo" +
+                        "toplote.",
                 "Uporaba: pozimi, v snegu, na ravnih predelih",
                 "*****",
                 R.drawable.zavetje_sneznakoca));
         zavetje.add(new Vsebina("Bivak za eno osebo",
-                "Opis: Začnemo tako, da na eni strani postavimo rogovilo ali dve palici, ki jih med seboj zvežemo. Na"+
-                "drugo stran na tla postavimo štor ali skalo. Izberemo primerno slemensko palico, ki bo povezovala"+
-                "oba konca. Daljša kot bo palica, daljši bo naš bivak. Ko imamo osnovno konstrukcijo, pričnemo z"+
-                "nalaganjem vej na slemensko palico. Te naj ne segajo preveč nad slemensko palico. Sedaj na našo"+
-                "konstrukcijo naložimo mah, nato lubje. Nadaljujemo s travo, ki jo zvijemo v snope in na koncu še z"+
-                "listjem. Vhod v bivak lahko založimo s svojo opremo ali vejami.",
+                "Opis: Začnemo tako, da na eni strani postavimo rogovilo ali dve palici, ki jih med seboj zvežemo. Na" +
+                        "drugo stran na tla postavimo štor ali skalo. Izberemo primerno slemensko palico, ki bo povezovala" +
+                        "oba konca. Daljša kot bo palica, daljši bo naš bivak. Ko imamo osnovno konstrukcijo, pričnemo z" +
+                        "nalaganjem vej na slemensko palico. Te naj ne segajo preveč nad slemensko palico. Sedaj na našo" +
+                        "konstrukcijo naložimo mah, nato lubje. Nadaljujemo s travo, ki jo zvijemo v snope in na koncu še z" +
+                        "listjem. Vhod v bivak lahko založimo s svojo opremo ali vejami.",
                 "Uporaba: v vseh letnih časih. Je manjše velikosti in običajno namenjen eni osebi.",
                 "***",
                 R.drawable.zavetje_bivakenaoseba));
         zavetje.add(new Vsebina("Bivak s šotorskim krilom",
-                "Opis:  Sestavljen je iz šotorskih kril, ki jih skozi kovinske odprtine povežemo z vrvico. Nato ga v spojih,"+
-                "spredaj in zadaj podpremo s palicami in pričvrstimo s klini. Spredaj in zadaj napnemo vrv, zadnjo"+
-                "stran pa zapremo z dodatno šotorko. Bivak je lahko poljubno dolg, odvisno koliko šotorskih kril bomo"+
-                "povezali enega za drugim.",
+                "Opis:  Sestavljen je iz šotorskih kril, ki jih skozi kovinske odprtine povežemo z vrvico. Nato ga v spojih," +
+                        "spredaj in zadaj podpremo s palicami in pričvrstimo s klini. Spredaj in zadaj napnemo vrv, zadnjo" +
+                        "stran pa zapremo z dodatno šotorko. Bivak je lahko poljubno dolg, odvisno koliko šotorskih kril bomo" +
+                        "povezali enega za drugim.",
                 "Uporaba: uporabimo ga običajno na taborjenju. Če nimamo pri sebi  omenjenih materialov, lahko\n" +
                         "\n" +
                         "namesto njih uporabimo naravne materiale, ki jih najdemo v bližini.",
@@ -205,7 +205,7 @@ public class Vsebina implements Serializable{
                         "-breza:  Poznamo jo po beli skorji. Enostavni listi so lahko nažagani ali režnjati. Plod breze je krilati orešek, ki pa ima pri nekaterih vrsta zelo drobna krilca.\n",
                 "",
                 "***"
-                ));
+        ));
         nasveti.add(new Vsebina("Prva pomoč",
                 "Opis: Opekline:\n" +
                         "- rano hladimo s hladno vodo, ki blaži bolečino in preprečuje nadaljnje poškodbe. Na rano ne dajemo ledu.\n" +

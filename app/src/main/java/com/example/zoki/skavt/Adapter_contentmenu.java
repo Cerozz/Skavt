@@ -1,7 +1,6 @@
 package com.example.zoki.skavt;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +29,7 @@ public class Adapter_contentmenu extends ArrayAdapter<Vsebina> {
         ImageView slika = (ImageView) customView.findViewById(R.id.imageView);
         text.setText(vsebina.ime);
         difficulty.setText("Zahtevnost: " + vsebina.zahtevnost);
-        if(vsebina.slika > 0) {
+        if (vsebina.slika > 0) {
             slika.setImageResource(vsebina.slika);
         }
         return customView;

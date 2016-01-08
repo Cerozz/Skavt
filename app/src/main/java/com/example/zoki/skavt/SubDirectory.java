@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -27,21 +26,15 @@ public class SubDirectory extends AppCompatActivity {
         String title = getIntent().getExtras().getString("ime");
         setTitle(title);
 
-        if(title.equals("Vozli")){
+        if (title.equals("Vozli")) {
             vsebina = new Vsebina().getVozli();
-        }
-        else if (title.equals("Ognji"))
-        {
+        } else if (title.equals("Ognji")) {
             vsebina = new Vsebina().getOgnji();
-        }
-        else if (title.equals("Orientacija"))
-        {
+        } else if (title.equals("Orientacija")) {
             vsebina = new Vsebina().getOrientacije();
-        }
-        else if (title.equals("Zavetje")){
+        } else if (title.equals("Zavetje")) {
             vsebina = new Vsebina().getZavetje();
-        }
-        else if (title.equals("Nasveti")){
+        } else if (title.equals("Nasveti")) {
             vsebina = new Vsebina().getNasveti();
         }
 

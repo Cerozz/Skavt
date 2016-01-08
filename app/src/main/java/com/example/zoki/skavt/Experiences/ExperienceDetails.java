@@ -49,6 +49,22 @@ public class ExperienceDetails extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.info) {
+            Intent start = new Intent(ExperienceDetails.this, About.class);
+            startActivity(start);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public class JSONTaskGet extends AsyncTask<String, ArrayList<Experience>, Experience> {
 
         @Override
@@ -96,7 +112,7 @@ public class ExperienceDetails extends AppCompatActivity {
             tvTitle = (TextView) findViewById(R.id.tvTitle);
             tvDetails = (TextView) findViewById(R.id.tvDetails);
             tvLike = (TextView) findViewById(R.id.tvLike);
-            tvAuthor = (TextView)findViewById(R.id.tvAuthor);
+            tvAuthor = (TextView) findViewById(R.id.tvAuthor);
             if (result != null) {
                 tvTitle.setText(result.Title);
                 tvAuthor.setText("Avtor: " + result.Author);
@@ -109,21 +125,6 @@ public class ExperienceDetails extends AppCompatActivity {
             }
 
         }
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.info) {
-            Intent start = new Intent(ExperienceDetails.this, About.class);
-            startActivity(start);
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 }

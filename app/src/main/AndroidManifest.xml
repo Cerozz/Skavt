@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.zoki.skavt">
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
     <uses-feature
         android:name="android.hardware.camera.flash"
         android:required="false" />
+
     <application
         android:name=".Experiences.MojSkavt"
         android:allowBackup="true"
@@ -17,33 +20,54 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SubDirectory" />
-        <activity android:name=".Element" />
+        <activity
+            android:name=".SubDirectory"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Element"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".About"
-            android:label="@string/title_activity_about" />
+            android:label="@string/title_activity_about"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Flashlight"
-            android:label="Svetilka" />
+            android:label="Svetilka"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Experiences.ExperienceMain"
             android:label="Deli izkušnje"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".Experiences.ExperienceDetails"></activity>
-        <activity android:name=".Experiences.ExperienceCreate"></activity>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Experiences.ExperienceDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Experiences.ExperienceCreate"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Experiences.ExperienceLogin"
             android:label="Prijava"
-            android:noHistory="true" />
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Experiences.ExperienceRegister"
-            android:label="Registracija" />
+            android:label="Registracija"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Postopek"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            ></activity>
     </application>
+
 </manifest>

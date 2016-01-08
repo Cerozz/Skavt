@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -65,7 +64,7 @@ public class ExperienceMain extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ExperienceMain.this, ExperienceDetails.class);
-                Experience ex = (Experience)parent.getItemAtPosition(position);
+                Experience ex = (Experience) parent.getItemAtPosition(position);
                 intent.putExtra("POSITION", Integer.toString(ex.ExperienceID));
                 startActivity(intent);
             }
@@ -109,7 +108,8 @@ public class ExperienceMain extends AppCompatActivity {
 
                 final Gson gson = new Gson();
 
-                experiences = gson.fromJson(finalJson, new TypeToken<List<Experience>>(){}.getType());
+                experiences = gson.fromJson(finalJson, new TypeToken<List<Experience>>() {
+                }.getType());
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -135,7 +135,7 @@ public class ExperienceMain extends AppCompatActivity {
 
             if (result != null) {
                 ListView lvExperiences = (ListView) findViewById(R.id.lvExperiences);
-                ExperienceAdapter adapter = new ExperienceAdapter(ExperienceMain.this,result);
+                ExperienceAdapter adapter = new ExperienceAdapter(ExperienceMain.this, result);
                 lvExperiences.setAdapter(adapter);
             } else {
                 Toast toast = Toast.makeText(getApplicationContext(), "Napaka pri komunikaciji z strežnikom", Toast.LENGTH_SHORT);

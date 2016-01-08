@@ -9,8 +9,8 @@
         android:id="@+id/ivSlika"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-     />
+        android:layout_gravity="center_horizontal" />
+
     <TextView
         android:id="@+id/tvElementDifficulty"
         android:layout_width="wrap_content"
@@ -30,5 +30,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="POSTOPEK" />
 
 </LinearLayout>

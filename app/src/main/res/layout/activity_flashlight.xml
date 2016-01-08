@@ -13,27 +13,27 @@
         android:id="@+id/toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layout_marginTop="109dp"
         android:background="@drawable/check"
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:textOff=""
-        android:textOn=""
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="109dp" />
+        android:textOn="" />
 
     <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SOS"
-        android:id="@+id/button"
-        android:layout_marginTop="69dp"
-        android:layout_below="@+id/toggle"
         android:layout_alignEnd="@+id/toggle"
         android:layout_alignStart="@+id/toggle"
-        android:textStyle="bold"
-        android:textSize="22sp"/>
+        android:layout_below="@+id/toggle"
+        android:layout_marginTop="69dp"
+        android:text="SOS"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

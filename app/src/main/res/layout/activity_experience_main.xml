@@ -13,28 +13,28 @@
         android:id="@+id/tvKategorije"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Seznam izkušenj"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/tvUsername"
-        android:layout_alignParentStart="true" />
+        android:text="Seznam izkušenj"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ListView
         android:id="@+id/lvExperiences"
         android:layout_width="match_parent"
         android:layout_height="156dp"
-        android:layout_gravity="center_horizontal"
-        android:choiceMode="singleChoice"
-        android:layout_below="@+id/tvKategorije"
+        android:layout_above="@+id/btnNewExperience"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/btnNewExperience" />
+        android:layout_below="@+id/tvKategorije"
+        android:layout_gravity="center_horizontal"
+        android:choiceMode="singleChoice" />
 
     <Button
         android:id="@+id/btnNewExperience"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Objavi novo izkušnjo"
         android:layout_above="@+id/btnLogout"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:text="Objavi novo izkušnjo" />
 
     <TextView
         android:id="@+id/tvUsername"
@@ -53,12 +53,12 @@
         android:layout_marginTop="70dp" />
 
     <Button
+        android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Odjavi"
-        android:id="@+id/btnLogout"
+        android:layout_alignEnd="@+id/lvExperiences"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/lvExperiences" />
+        android:text="Odjavi" />
 
 </RelativeLayout>

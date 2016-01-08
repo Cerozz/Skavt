@@ -26,7 +26,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:ems="10"
-        android:hint="Janez007"
+        android:hint="Uporabniško ime"
         android:inputType="text" />
 
 
@@ -37,7 +37,7 @@
         android:layout_above="@+id/btnConfirm"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="29dp"
-        android:hint="****"
+        android:hint="Geslo"
         android:inputType="textPassword" />
 
     <TextView
@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/tvInfoLogin"
-        android:text="Registriraj" />
+        android:text="Registracija" />
 
     <TextView
         android:id="@+id/tvLabelRegisterInfo"
@@ -83,8 +83,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/btnRegister"
         android:layout_toEndOf="@+id/tvInfoLogin"
-        android:text="Nimaš še računa? "
         android:gravity="center"
+        android:text="Nimaš še računa? "
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#000000" />
 
