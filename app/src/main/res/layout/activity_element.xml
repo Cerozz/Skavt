@@ -15,6 +15,7 @@
         android:id="@+id/tvElementDifficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="10dp"
         android:layout_gravity="center_horizontal"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -22,12 +23,16 @@
         android:id="@+id/tvOpis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/tvUporaba"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         android:layout_gravity="center_horizontal"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 

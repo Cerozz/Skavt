@@ -1,6 +1,7 @@
 package com.example.zoki.skavt;
 
 import android.content.Context;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,12 @@ public class Adapter_contentmenu extends ArrayAdapter<Vsebina> {
         LayoutInflater inf = LayoutInflater.from(getContext());
         View customView = inf.inflate(R.layout.row, parent, false);
         Vsebina vsebina = vsebina_list.get(position);
+
         TextView text = (TextView) customView.findViewById(R.id.textView);
+        if (vsebina.ime.length() > 10){
+            text.setTextSize(TypedValue.COMPLEX_UNIT_DIP,20);
+        }
+
         TextView difficulty = (TextView) customView.findViewById(R.id.tvDifficulty);
         ImageView slika = (ImageView) customView.findViewById(R.id.imageView);
         text.setText(vsebina.ime);
