@@ -40,29 +40,29 @@ public class Vsebina implements Serializable {
     public ArrayList<Vsebina> getVozli() {
         ArrayList<Vsebina> vozli = new ArrayList<>();
         vozli.add(new Vsebina("Ambulantni",
-                "OPIS:  sestavljen je iz dveh polvozlov.Se ne zatika in zato ga tudi preprosto odvežemo. Je zelo enostaven in močno drži. Če so vrvi gladke, raje uporabimo ribiški ali podaljševalni vozel.\n\n",
-                "UPORABA: pri prvi pomoči(fiksiranje zlomljenega uda, zavezovanje s trikotno ruto), pri podaljševanju dveh krajši vrvi, a samo v primeru, da sta enako debeli, ustvarjanje zanke\n",
-                "***",
+                "OPIS: Ambulantni vozel je sestavljen iz dveh polvozlov. Se ne zatika in zato ga tudi preprosto odvežemo. Znan je po enostavnosti in moči. Če so vrvi gladke, raje uporabimo ribiški ali podaljševalni vozel.\n\n",
+                "UPORABA: Prva pomoč(fiksiranje zlomljenega uda, zavezovanje s trikotno ruto), pri podaljševanju dveh krajših vrvi(če sta obe vrvi enako široki), ustvarjanje zanke.\n",
+                "**",
                 R.drawable.vozel_ambulanti));
         vozli.add(new Vsebina("Bičev",
-                "je boljši od kavbojskega, ker se pri enostranski obremenitvi zateguje in ne drsi. Vsebina se lahko tudi vplete.\n\n",
-                "UPORABA: v alpinizmu za privezovanje na karabin, za pritrjevanje vrvi na drog, za postavljanje šotora\n",
-                "**",
+                "Bičev vozel je boljši od kavbojskega, ker se pri enostranski obremenitvi zateguje in ne drsi. Vsebina se lahko tudi vplete.\n\n",
+                "UPORABA: V alpinizmu za privezovanje na karabin, za pritrjevanje vrvi na drog, za postavljanje šotora.\n",
+                "***",
                 R.drawable.vozel_bicev));
         vozli.add(new Vsebina("Osmica",
-                "OPIS: Osmico lahko izdelamo kot osnovno ali kot vpleteno. Primerna je predvsem za varovanje v gorah.\n\n",
-                "UPORABA: spust ob vrvi pri zimski tehniki, pri izdelovanju škripčevja, vrvna ograja, vmesni vozli pri ledeniškem navezovanju\n",
+                "OPIS: Osmico lahko izdelamo kot osnovno ali kot vpleteno. Primerna je predvsem za varovanje v gorah(plezanje).\n\n",
+                "UPORABA: Spust ob vrvi pri zimski tehniki, pri izdelovanju škripčevja, vrvna ograja, vmesni vozli pri ledeniškem navezovanju.\n",
                 "**",
                 R.drawable.vozel_osmica));
         vozli.add(new Vsebina("Podaljševalni",
-                "OPIS: služi povezovanju dveh vrvi, ali pa ene same vrvice, da tako dobimo neskončno zanka. Priporočljiva je izdelava s trojnim ovojem.\n\n",
-                "UPORABA: kadar imamo dve prekratki vrvi, kadar želimo dve vrvi povezati. \n",
+                "OPIS: Služi povezovanju dveh vrvi, ali pa ene same vrvice, da tako dobimo neskončno zanko. Priporočljiva je izdelava s trojnim ovojem.\n\n",
+                "UPORABA: Kadar imamo dve prekratki vrvi, kadar želimo dve vrvi povezati. \n",
                 "****",
                 R.drawable.vozel_podaljsevalni));
 
         vozli.add(new Vsebina("Prusikov",
                 "OPIS: Spada med drsne vozle. Pri obremenitvi se zateguje, če ga razbremenimo, pa ga lahko pomikamo po vrvi, drogu,…  Naredimo ga s tanjšo vrvico na debelejši. Prusikov vozel drži v obe smeri.\n",
-                "UPORABA: samoreševanje, samovarovanje pri spustu ob vrvi\n",
+                "UPORABA: Samoreševanje, samovarovanje pri spustu ob vrvi.\n",
                 "****",
                 R.drawable.vozel_prusikov));
 
@@ -72,23 +72,23 @@ public class Vsebina implements Serializable {
     public ArrayList<Vsebina> getOgnji() {
         ArrayList<Vsebina> ognji = new ArrayList<>();
         ognji.add(new Vsebina("Piramida",
-                "OPIS: v tla zabijemo debelejšo vejo, okoli nje netivo, dračje, ter na koncu še debelejša drva.",
+                "OPIS: V tla zapičimo večjo vejo, okoli nje dodamo netivo, dračje, ter na koncu še debelejša drva.",
                 "**",
                 R.drawable.ogenj_piramida));
         ognji.add(new Vsebina("Pagoda",
-                "OPIS: postavimo ga ob posebnih priložnostih, kot je zaključek tabora in podelitev priznanj. Vzame nam nekoliko več časa. V notranjosti postavimo piramido, okoli nje pa zložimo štiri stranice pagode. Za zunanje stranice uporabimo debelejša drva.",
-                "**",
+                "OPIS: Postavimo ga ob posebnih priložnostih, kot je zaključek tabora in podelitev priznanj. Časovno bolj zahteven. V notranjosti postavimo piramido, okoli nje pa postavimo štiri stranice pagode. Za zunanje stranice uporabimo debelejša drva.",
+                "***",
                 R.drawable.ogenj_pagoda));
         ognji.add(new Vsebina("Zvezdasti",
-                "OPIS: uporabljali so ga že Indijanci. Okoli ognja položimo debelejša polena, ki segajo v ogenj samo z enim koncem. Polena gorijo počasi, mi pa jih moramo potiskati proti središču ognja. Ogenj gori počasi in dlje časa.",
+                "OPIS: Zelo stara tehnika ognja, ki so jo uporabljali že Indijanci. Okoli ognja položimo debelejša polena, ki segajo v ogenj samo z enim koncem. Polena gorijo počasi, mi pa jih moramo potiskati proti središču ognja. Ogenj gori počasi in dlje časa.",
                 "***",
                 R.drawable.ogenj_zvezdasti));
         ognji.add(new Vsebina("Strešni",
-                "OPIS: je podolgovate oblike. Na vsako stran namestimo dve rogovili. Rogovili na vrhu povežemo s slemensko palico, ki je namenjena opori. Nanjo namreč položimo drva. V notranjost nabašemo netivo in dračje po celi dolžini. Daje močno toploto, uporablja pa se ga predvsem za pečenje.",
+                "OPIS: Strešni ogenj je podolgovate oblike. Na vsako stran namestimo dve rogovili. Rogovili na vrhu povežemo s slemensko palico, ki je namenjena opori. Nanjo namreč položimo drva. V notranjost položimo netivo in dračje po celi dolžini. Daje močno toploto, uporablja pa se ga predvsem za pečenje.",
                 "****",
                 R.drawable.ogenj_stresni));
         ognji.add(new Vsebina("Stražni",
-                "OPIS: Naredimo osnoven ogenj po izbiri. Ob ognju postavimo lojtro, na katero naložimo polena. Ta polena naj bodo čim bolj okrogla. Ko poleno v ognju dogori, se vsa naložena polena premaknejo bližje ognju. Ogenj gori precej časa. Uporablja se kot za ogrevanje ali stražo čez celo noč.",
+                "OPIS: Naredimo osnoven ogenj po izbiri. Ob ognju postavimo lojtro, na katero naložimo polena. Ta polena naj bodo čim bolj okrogla. Ko poleno v ognju dogori, se vsa naložena polena premaknejo bližje ognju. Ogenj gori dolgo časa. Uporablja se kot za ogrevanje ali stražo čez celo noč.",
                 "*****",
                 R.drawable.ogenj_strazni));
         return ognji;
@@ -98,11 +98,11 @@ public class Vsebina implements Serializable {
         ArrayList<Vsebina> orientacije = new ArrayList<>();
         orientacije.add(new Vsebina("Kompas",
                 "Kompas je naprava s prosto vrtečo magnetno iglo za določanje smeri neba.\n" +
-                        "Z njim določamo:\n" +
-                        "- smeri neba\n" +
-                        "- orientiramo topografsko karto\n" +
-                        "- smerni kot ali azimut in razdaljo poljubni točki na območju\n\n " +
-                        "UPORABA: kompas ima magnetno iglo, ki se vedno obrne proti magnetnemu severu. Ta nekoliko odstopa od dejanskega geografskega severa, vendar odstopanje ni veliko. Pazljivi moramo biti na oznake na kompasu. Če so oznake angleške (N, E, S, W), je sever označen s črko N. " +
+                        "Uporabe:\n" +
+                        "- določanje smeri neba\n" +
+                        "- orientacija glede na topografsko karto\n" +
+                        "- smerni kot ali azimut in razdalja poljubne točke na območju\n\n " +
+                        "UPORABA: Kompas ima magnetno iglo, ki se vedno obrne proti magnetnemu severu. Ta nekoliko odstopa od dejanskega geografskega severa, vendar odstopanje ni veliko. Pazljivi moramo biti na oznake na kompasu. Če so oznake angleške (N, E, S, W), je sever označen s črko N. " +
                         "Če so oznake slovenske(S, V, J, Z), sever označuje črka S. Na smer igle lahko vplivajo tudi druga magnetna polja, ki jih povzročajo daljnovodi, električni aparati in kovinski predmeti. Poskrbeti moramo, da teh stvari ni v bližini.\n",
                 "**",
                 R.drawable.orientacija_kompas));

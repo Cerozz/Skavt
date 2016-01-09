@@ -18,7 +18,11 @@ public class Element extends AppCompatActivity {
         setContentView(R.layout.activity_element);
         Vsebina vsebina = (Vsebina) getIntent().getSerializableExtra("Vsebina");
         setTitle(vsebina.ime);
-
+        Button button = (Button) findViewById(R.id.button2);
+        button.setVisibility(View.GONE);
+        if(vsebina.ime.equals("Osmica") ||vsebina.ime.equals("Ambulantni") ||vsebina.ime.equals("Bičev") ||vsebina.ime.equals("Podaljševalni") ||vsebina.ime.equals("Prusikov")){
+            button.setVisibility(View.VISIBLE);
+        }
         if (vsebina.uporaba != null) {
             TextView tvUporaba = (TextView) findViewById(R.id.tvUporaba);
             tvUporaba.setText(vsebina.uporaba);
@@ -35,7 +39,6 @@ public class Element extends AppCompatActivity {
             ivSlika.setImageResource(vsebina.slika);
         }
 
-        Button button = (Button) findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

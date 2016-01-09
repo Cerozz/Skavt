@@ -49,6 +49,7 @@
             android:paddingLeft="130dp"
             android:paddingTop="70dp"
             android:text=""
+            android:textStyle="bold"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#000000" />
 
