@@ -1,8 +1,13 @@
 package com.example.zoki.skavt.Experiences;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.zoki.skavt.About;
+import com.example.zoki.skavt.MainActivity;
 import com.example.zoki.skavt.R;
 
 import org.apache.commons.codec.binary.Hex;
@@ -32,6 +38,8 @@ public class ExperienceLogin extends AppCompatActivity {
     private TextView tvInfo;
     private String username, password;
 
+    private CoordinatorLayout coordinatorLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +49,9 @@ public class ExperienceLogin extends AppCompatActivity {
         etPassword = (EditText) findViewById(R.id.etUsername);
 
         tvInfo = (TextView) findViewById(R.id.tvInfoLogin);
+
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id
+                .coordinatorLayout);
 
         Button btnLogin = (Button) findViewById(R.id.btnConfirm);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -70,9 +81,18 @@ public class ExperienceLogin extends AppCompatActivity {
         String loginName = globalVariable.getLoginName();
 
         if (loginName != null) {
-            Intent intent = new Intent(ExperienceLogin.this, ExperienceMain.class);
-            intent.putExtra("USERNAME", loginName);
-            startActivity(intent);
+            if(isInternetConnected(getApplicationContext())){
+                Intent intent = new Intent(ExperienceLogin.this, ExperienceMain.class);
+                intent.putExtra("USERNAME", loginName);
+                startActivity(intent);
+            }
+            else {
+                globalVariable.setLoginName(null);
+
+                Intent intent = new Intent(ExperienceLogin.this, ExperienceLogin.class);
+                startActivity(intent);
+            }
+
         }
     }
 
@@ -114,8 +134,9 @@ public class ExperienceLogin extends AppCompatActivity {
                 return buffer.toString();
 
             } catch (SocketTimeoutException e) {
-                Toast toast = Toast.makeText(getApplicationContext(), "Napaka pri komunikaciji z strežnikom, preverite internetno povezavo", Toast.LENGTH_SHORT);
-                toast.show();
+                Snackbar snackbar = Snackbar
+                        .make(coordinatorLayout, "Napaka pri komunikaciji z strežnikom!", Snackbar.LENGTH_LONG);
+                snackbar.show();
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -138,19 +159,34 @@ public class ExperienceLogin extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            if (result.equals("true")) {
-                MojSkavt loginName = (MojSkavt) getApplicationContext();
-                loginName.setLoginName(username);
+            if (result == null){
 
-                Intent intent = new Intent(ExperienceLogin.this, ExperienceMain.class);
-                intent.putExtra("USERNAME", username);
-                startActivity(intent);
-            } else {
-                tvInfo.setText("Napačno uporabniško ime oz. geslo");
+                Snackbar snackbar = Snackbar
+                        .make(coordinatorLayout, "Ni internetne povezave!", Snackbar.LENGTH_LONG);
+                snackbar.show();;
+
+            }
+            else {
+                if (result.equals("true")) {
+                    MojSkavt loginName = (MojSkavt) getApplicationContext();
+                    loginName.setLoginName(username);
+
+                    Intent intent = new Intent(ExperienceLogin.this, ExperienceMain.class);
+                    intent.putExtra("USERNAME", username);
+                    startActivity(intent);
+                } else {
+                    tvInfo.setText("Napačno uporabniško ime oz. geslo");
+                }
             }
 
-
         }
+    }
+
+    public static boolean isInternetConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
     }
 
 }

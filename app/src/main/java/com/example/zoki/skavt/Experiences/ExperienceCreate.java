@@ -3,6 +3,8 @@ package com.example.zoki.skavt.Experiences;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +29,8 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class ExperienceCreate extends AppCompatActivity {
+
+    private CoordinatorLayout coordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,9 +104,11 @@ public class ExperienceCreate extends AppCompatActivity {
         protected void onPostExecute(ArrayList<Experience> result) {
             super.onPostExecute(result);
 
-
-            Toast toast = Toast.makeText(getApplicationContext(), "Izkušnja je bila objavljena", Toast.LENGTH_SHORT);
-            toast.show();
+            coordinatorLayout = (CoordinatorLayout) findViewById(R.id
+                    .coordinatorLayout);
+            Snackbar snackbar = Snackbar
+                    .make(coordinatorLayout, "Izkušnja je bila objavljena! (simulacija objave)", Snackbar.LENGTH_LONG);
+            snackbar.show();
 
         }
     }

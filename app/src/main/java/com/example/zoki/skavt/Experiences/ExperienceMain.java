@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.zoki.skavt.About;
 import com.example.zoki.skavt.MainActivity;
@@ -30,11 +29,11 @@ import java.util.List;
 
 public class ExperienceMain extends AppCompatActivity {
 
-    private ListView lvExperiences, lvMyExperiences;
+    private ListView lvExperiences;
     private String username;
     private TextView tvUsername;
 
-    private ArrayList<Experience> my_experience, experiences;
+    private ArrayList<Experience> experiences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +68,7 @@ public class ExperienceMain extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         Button btnLogout = (Button) findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -148,15 +148,10 @@ public class ExperienceMain extends AppCompatActivity {
         protected void onPostExecute(ArrayList<Experience> result) {
             super.onPostExecute(result);
 
-            if (result != null) {
-                ListView lvExperiences = (ListView) findViewById(R.id.lvExperiences);
-                ExperienceAdapter adapter = new ExperienceAdapter(ExperienceMain.this, result);
-                lvExperiences.setAdapter(adapter);
-            } else {
-                Toast toast = Toast.makeText(getApplicationContext(), "Napaka pri komunikaciji z strežnikom", Toast.LENGTH_SHORT);
-                toast.show();
+            ListView lvExperiences = (ListView) findViewById(R.id.lvExperiences);
+            ExperienceAdapter adapter = new ExperienceAdapter(ExperienceMain.this, result);
+            lvExperiences.setAdapter(adapter);
 
-            }
         }
     }
 }

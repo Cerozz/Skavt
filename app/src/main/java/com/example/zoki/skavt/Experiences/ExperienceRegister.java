@@ -3,6 +3,8 @@ package com.example.zoki.skavt.Experiences;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +30,7 @@ public class ExperienceRegister extends AppCompatActivity {
     private EditText etRegisterUsername, etRegisterPassword;
     private TextView tvInfo;
     private String username, password;
+    private CoordinatorLayout coordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,9 @@ public class ExperienceRegister extends AppCompatActivity {
         etRegisterPassword = (EditText) findViewById(R.id.etRegisterPassword);
 
         tvInfo = (TextView) findViewById(R.id.tvRegisterInfo);
+
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id
+                .coordinatorLayout);
 
         Button btnConfirmRegister = (Button) findViewById(R.id.btnRegisterConfirm);
         btnConfirmRegister.setOnClickListener(new View.OnClickListener() {
@@ -93,8 +99,9 @@ public class ExperienceRegister extends AppCompatActivity {
                 return buffer.toString();
 
             } catch (SocketTimeoutException e) {
-                Toast toast = Toast.makeText(getApplicationContext(), "Napaka pri komunikaciji z strežnikom, preverite internetno povezavo", Toast.LENGTH_SHORT);
-                toast.show();
+                Snackbar snackbar = Snackbar
+                        .make(coordinatorLayout, "Napaka pri komunikaciji z strežnikom!", Snackbar.LENGTH_LONG);
+                snackbar.show();
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -117,12 +124,23 @@ public class ExperienceRegister extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            if (result.equals("true")) {
-                Toast toast = Toast.makeText(getApplicationContext(), "Uspešno dodan uporabnik: " + etRegisterUsername.getText().toString(), Toast.LENGTH_SHORT);
-                toast.show();
-            } else {
-                tvInfo.setText("To uporabniško ime je že zasedeno");
+            if (result == null){
+
+                Snackbar snackbar = Snackbar
+                        .make(coordinatorLayout, "Ni internetne povezave!", Snackbar.LENGTH_LONG);
+                snackbar.show();;
+
             }
+            else {
+                if (result.equals("true")) {
+                    Snackbar snackbar = Snackbar
+                            .make(coordinatorLayout, "Uspešno dodan uporabnik:" + etRegisterUsername.getText().toString()+ "(simulacija)", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                } else {
+                    tvInfo.setText("To uporabniško ime je že zasedeno");
+                }
+            }
+            
         }
     }
 }

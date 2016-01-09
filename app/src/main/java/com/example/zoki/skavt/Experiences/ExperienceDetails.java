@@ -3,6 +3,8 @@ package com.example.zoki.skavt.Experiences;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -113,16 +115,12 @@ public class ExperienceDetails extends AppCompatActivity {
             tvDetails = (TextView) findViewById(R.id.tvDetails);
             tvLike = (TextView) findViewById(R.id.tvLike);
             tvAuthor = (TextView) findViewById(R.id.tvAuthor);
-            if (result != null) {
-                tvTitle.setText(result.Title);
-                tvAuthor.setText("Avtor: " + result.Author);
-                tvDetails.setText(result.Details);
-                numberOfLikes = result.Likes;
-                tvLike.setText("Število všečkov: " + Integer.toString(numberOfLikes));
-            } else {
-                Toast toast = Toast.makeText(getApplicationContext(), "Napaka pri komunikaciji z strežnikom", Toast.LENGTH_SHORT);
-                toast.show();
-            }
+
+            tvTitle.setText(result.Title);
+            tvAuthor.setText("Avtor: " + result.Author);
+            tvDetails.setText(result.Details);
+            numberOfLikes = result.Likes;
+            tvLike.setText("Število všečkov: " + Integer.toString(numberOfLikes));
 
         }
     }
