@@ -14,6 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:textSize="22dp"
+        android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -22,6 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:textSize="16dp"
+        android:textStyle="italic"
         android:layout_below="@+id/tvTitle"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -39,13 +43,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:text="Všečkaj" />
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_izkusnja"
+        android:text="Všečkaj"
+        android:textSize="20dp"/>
 
     <TextView
         android:id="@+id/tvLike"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btnLike"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18dp"
         android:layout_alignParentStart="true"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 

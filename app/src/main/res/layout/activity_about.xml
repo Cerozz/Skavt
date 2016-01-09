@@ -54,8 +54,8 @@
         android:id="@+id/textView10"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:text="Icons made by user Freepik on www.flaticon.com, which is licensed under Creative Commons BY 3.0\nhttp://nova-gorica1.skavt.net/ng/sk_prirocnik_Korak_s_skavtom/sk%20prirocnik%20Korak%20s%20skavtom.htm\nhttp://www.gore-ljudje.net/novosti/106189/\nhttp://zvn.skavt.net/naravni-bivak-za-eno-osebo-optimist\n"
-        android:textSize="8dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:text="Icons made by user Freepik on www.flaticon.com, which is licensed under Creative Commons BY 3.0\nhttp://nova-gorica1.skavt.net/ng/sk_prirocnik_Korak_s_skavtom/sk%20prirocnik%20Korak%20s%20skavtom.htm\nhttp://www.gore-ljudje.net/novosti/106189/\nhttp://zvn.skavt.net/naravni-bivak-za-eno-osebo-optimist\n"
+        android:textSize="8dp" />
 </RelativeLayout>

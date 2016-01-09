@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 
 public class AdapterSwipe extends PagerAdapter {
 
-    private int[] image_resource = {R.drawable.osmica1,R.drawable.osmica2,R.drawable.osmica3,R.drawable.osmica4,R.drawable.osmica5};
+    private int[] image_resource = {R.drawable.osmica1, R.drawable.osmica2, R.drawable.osmica3, R.drawable.osmica4, R.drawable.osmica5};
     private Context cot;
     private LayoutInflater layinf;
 

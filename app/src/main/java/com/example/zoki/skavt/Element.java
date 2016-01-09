@@ -20,7 +20,7 @@ public class Element extends AppCompatActivity {
         setTitle(vsebina.ime);
         Button button = (Button) findViewById(R.id.button2);
         button.setVisibility(View.GONE);
-        if(vsebina.ime.equals("Osmica") ||vsebina.ime.equals("Ambulantni") ||vsebina.ime.equals("Bičev") ||vsebina.ime.equals("Podaljševalni") ||vsebina.ime.equals("Prusikov")){
+        if (vsebina.ime.equals("Osmica") || vsebina.ime.equals("Ambulantni") || vsebina.ime.equals("Bičev") || vsebina.ime.equals("Podaljševalni") || vsebina.ime.equals("Prusikov")) {
             button.setVisibility(View.VISIBLE);
         }
         if (vsebina.uporaba != null) {

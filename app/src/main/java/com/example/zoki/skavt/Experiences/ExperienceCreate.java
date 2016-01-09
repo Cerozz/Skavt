@@ -42,6 +42,22 @@ public class ExperienceCreate extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.info) {
+            Intent start = new Intent(ExperienceCreate.this, About.class);
+            startActivity(start);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public class JsonTaskPost extends AsyncTask<String, ArrayList<Experience>, ArrayList<Experience>> {
 
         @Override
@@ -89,21 +105,5 @@ public class ExperienceCreate extends AppCompatActivity {
             toast.show();
 
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.info) {
-            Intent start = new Intent(ExperienceCreate.this, About.class);
-            startActivity(start);
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

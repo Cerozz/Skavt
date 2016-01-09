@@ -30,10 +30,13 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/toggle"
         android:layout_alignStart="@+id/toggle"
+        android:background="@drawable/button"
         android:layout_below="@+id/toggle"
         android:layout_marginTop="69dp"
         android:text="SOS"
-        android:textSize="22sp"
+        android:textSize="24dp"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
+
 
 </RelativeLayout>

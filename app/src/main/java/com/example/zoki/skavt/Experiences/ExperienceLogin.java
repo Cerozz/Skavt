@@ -76,6 +76,22 @@ public class ExperienceLogin extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.info) {
+            Intent start = new Intent(ExperienceLogin.this, About.class);
+            startActivity(start);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public class JSONTaskGet extends AsyncTask<String, Void, String> {
 
         @Override
@@ -135,22 +151,6 @@ public class ExperienceLogin extends AppCompatActivity {
 
 
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.info) {
-            Intent start = new Intent(ExperienceLogin.this, About.class);
-            startActivity(start);
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 }

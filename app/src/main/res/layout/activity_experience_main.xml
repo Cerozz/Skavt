@@ -34,7 +34,10 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/btnLogout"
         android:layout_alignParentEnd="true"
-        android:text="Objavi novo izkušnjo" />
+        android:height="20dp"
+        android:background="@drawable/button_izkusnja"
+        android:text="Objavi novo izkušnjo"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/tvUsername"
@@ -59,6 +62,9 @@
         android:layout_alignEnd="@+id/lvExperiences"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:text="Odjavi" />
+        android:height="20dp"
+        android:background="@drawable/button_izkusnja"
+        android:text="Odjavi"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>
