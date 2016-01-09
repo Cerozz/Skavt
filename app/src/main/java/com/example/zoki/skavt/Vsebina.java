@@ -104,19 +104,19 @@ public class Vsebina implements Serializable {
                         "- smerni kot ali azimut in razdalja poljubne točke na območju\n\n " +
                         "UPORABA: Kompas ima magnetno iglo, ki se vedno obrne proti magnetnemu severu. Ta nekoliko odstopa od dejanskega geografskega severa, vendar odstopanje ni veliko. Pazljivi moramo biti na oznake na kompasu. Če so oznake angleške (N, E, S, W), je sever označen s črko N. " +
                         "Če so oznake slovenske(S, V, J, Z), sever označuje črka S. Na smer igle lahko vplivajo tudi druga magnetna polja, ki jih povzročajo daljnovodi, električni aparati in kovinski predmeti. Poskrbeti moramo, da teh stvari ni v bližini.\n",
-                "**",
+                "false",
                 R.drawable.orientacija_kompas));
         orientacije.add(new Vsebina("Zvezde",
                 "V jasnih nočeh se najbolje orientiramo po zvezdi Severnici. Najprej poiščemo veliki voz. To ozvezdje stalno kroži okrog severnega nebesnega pola in v naših krajih nikoli ne zaide. Isto velja za zvezdo Severnico. " +
                         "Razdaljo med zvezdama zadnje osi velikega voza petkrat podaljšamo in tako pridemo do močne zvezde Severnice, ki nam določa točno smer na sever.",
-                "**",
+                "false",
                 R.drawable.orientacija_severnica));
         orientacije.add(new Vsebina("Luna",
                 "- mlaj se vidi po zahodu sonca ob 18h na Z\n" +
                         "- prvi krajec je okrog 18h na J, ob 24h na Z\n" +
                         "- polna luna vzhaja po zahodu sonca ob 18h na V, ob 24h na J, ob 6h pa na Z.\n" +
                         "- zadnji krajec vzhaja ob 24h na V, ob 6h je na J, ob 12h je na Z\n",
-                "***",
+                "false",
                 R.drawable.orientacija_luna));
         orientacije.add(new Vsebina("Navigacija ostalo",
                 " podnevi si lahko pomagamo s Soncem. Sonce je opoldne najvišje na obzorju. Senca je takrat najkrajša in kaže proti severu.\n" +
@@ -126,7 +126,7 @@ public class Vsebina implements Serializable {
                         "- mravljišča so proti jugu položnejša\n" +
                         "- mravljišča so na južni strani dreves\n" +
                         "- sneg se dlje obdrži na severnih pobočjih\n",
-                "***",
+                "false",
                 R.drawable.orientacija_mlaj));
 
         return orientacije;
@@ -172,19 +172,6 @@ public class Vsebina implements Serializable {
                         "namesto njih uporabimo naravne materiale, ki jih najdemo v bližini.",
                 "**",
                 R.drawable.zavetje_sotorskakrila));
-        zavetje.add(new Vsebina("Ostala zavetja",
-                "Opis:  Bivak si lahko postavimo povsem po svoje. Glavni namen bivaka je, da nam je v njem toplo in\n" +
-                        "\n" +
-                        "udobno. V naravi lahko tako izkoristimo naravne danosti v bližini:",
-                "Uporaba: zgradimo bivak pod podrtim drevesom\n" +
-                        "\n" +
-                        "- poiščemo luknjo ali manjšo votlino\n" +
-                        "\n" +
-                        "- poiščemo skalni previs in nanj napnemo šotorsko krilo\n" +
-                        "\n" +
-                        "- iglu pozimi",
-                "poljubno",
-                R.drawable.zavetje_ostalo));
         return zavetje;
     }
 
@@ -193,7 +180,7 @@ public class Vsebina implements Serializable {
         nasveti.add(new Vsebina("Sledovi živali",
                 "",
                 "",
-                "***",
+                "false",
                 R.drawable.nasveti_sledi));
         nasveti.add(new Vsebina("Listi dreves",
                 "-smreka:  Iglice so dolge od 10-25 milimetrov, ter so ravne. Na koncu vej rastejo spodaj podolgovati storži, ki so obrnjeni navzdol.\n" +
@@ -204,7 +191,7 @@ public class Vsebina implements Serializable {
                         "-lipa: Listi: srčaste oblike, pecljati, dolgi nad 8 cm. Plod: majhni oreški s pecljem, ki se konča s krilcem; pokriti so z debelo lupino, ki ima pet močno vidnih robov\n" +
                         "-breza:  Poznamo jo po beli skorji. Enostavni listi so lahko nažagani ali režnjati. Plod breze je krilati orešek, ki pa ima pri nekaterih vrsta zelo drobna krilca.\n",
                 "",
-                "***"
+                "false"
         ));
         nasveti.add(new Vsebina("Prva pomoč",
                 "Opis: Opekline:\n" +
@@ -227,7 +214,7 @@ public class Vsebina implements Serializable {
                         "- nanesemo gel za oskrbo kože po pikih\n" +
                         "- v primeru alergijske reakcije moramo imeti ob sebi ustrezno zdravo\n",
                 "Uporaba: v vseh letnih časih. Je manjše velikosti in običajno namenjen eni osebi.",
-                "***"));
+                "false"));
         return nasveti;
     }
 }

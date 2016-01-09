@@ -29,7 +29,9 @@ public class Element extends AppCompatActivity {
         }
 
         TextView tvZahtevnost = (TextView) findViewById(R.id.tvElementDifficulty);
-        tvZahtevnost.setText("Zahtevnost: " + vsebina.zahtevnost);
+        if (!vsebina.zahtevnost.equals("false")) {
+            tvZahtevnost.setText("Zahtevnost: " + vsebina.zahtevnost);
+        }
 
         TextView tvOpis = (TextView) findViewById(R.id.tvOpis);
         tvOpis.setText(vsebina.opis);

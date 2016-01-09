@@ -14,20 +14,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:textSize="22dp"
-        android:textStyle="bold"
         android:layout_alignParentTop="true"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="22dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:textSize="16dp"
-        android:textStyle="italic"
         android:layout_below="@+id/tvTitle"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="16dp"
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/tvDetails"
@@ -43,20 +43,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:textColor="#FFFFFF"
         android:background="@drawable/button_izkusnja"
         android:text="Všečkaj"
-        android:textSize="20dp"/>
+        android:textColor="#FFFFFF"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/tvLike"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btnLike"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="18dp"
         android:layout_alignParentStart="true"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

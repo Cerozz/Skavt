@@ -25,7 +25,10 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="88dp"
-        android:text="Objavi" />
+        android:background="@drawable/button_izkusnja"
+        android:text="Objavi"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/editText"
