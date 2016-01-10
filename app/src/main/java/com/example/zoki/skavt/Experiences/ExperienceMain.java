@@ -76,7 +76,6 @@ public class ExperienceMain extends AppCompatActivity {
             public void onClick(View v) {
                 MojSkavt loginName = (MojSkavt) getApplicationContext();
                 loginName.setLoginName(null);
-
                 Intent intent = new Intent(ExperienceMain.this, MainActivity.class);
                 startActivity(intent);
             }

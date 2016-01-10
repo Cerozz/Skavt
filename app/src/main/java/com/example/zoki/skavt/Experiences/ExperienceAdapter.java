@@ -28,7 +28,7 @@ public class ExperienceAdapter extends ArrayAdapter<Experience> {
         TextView tvAuthorLikes = (TextView) convertView.findViewById(R.id.tvExperienceAuthorLikes);
 
         tvTitle.setText(experience.Title);
-        tvAuthorLikes.setText("Avtor: " + experience.Author + ", " + " všečki: " + experience.Likes);
+        tvAuthorLikes.setText("Avtor: " + experience.Author + "\n" + "Všečki: " + experience.Likes);
 
         return convertView;
     }

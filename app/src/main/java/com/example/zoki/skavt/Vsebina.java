@@ -40,31 +40,30 @@ public class Vsebina implements Serializable {
     public ArrayList<Vsebina> getVozli() {
         ArrayList<Vsebina> vozli = new ArrayList<>();
         vozli.add(new Vsebina("Ambulantni",
-                "OPIS: Ambulantni vozel je sestavljen iz dveh polvozlov. Se ne zatika in zato ga tudi preprosto odvežemo. Znan je po enostavnosti in moči. Če so vrvi gladke, raje uporabimo ribiški ali podaljševalni vozel.\n\n",
-                "UPORABA: Prva pomoč(fiksiranje zlomljenega uda, zavezovanje s trikotno ruto), pri podaljševanju dveh krajših vrvi(če sta obe vrvi enako široki), ustvarjanje zanke.\n",
-                "**",
+                "Ambulantni vozel je sestavljen iz dveh polvozlov. Se ne zatika in zato ga tudi preprosto odvežemo. Znan je po enostavnosti in moči. Če so vrvi gladke, raje uporabimo ribiški ali podaljševalni vozel.",
+                "• Prva pomoč(fiksiranje zlomljenega uda, zavezovanje s trikotno ruto)\n• Pri podaljševanju dveh krajših vrvi, če sta obe vrvi enako široki\n• Ustvarjanje zanke",
+                "★★☆☆☆",
                 R.drawable.vozel_ambulanti));
         vozli.add(new Vsebina("Bičev",
-                "Bičev vozel je boljši od kavbojskega, ker se pri enostranski obremenitvi zateguje in ne drsi. Vsebina se lahko tudi vplete.\n\n",
-                "UPORABA: V alpinizmu za privezovanje na karabin, za pritrjevanje vrvi na drog, za postavljanje šotora.\n",
-                "***",
+                "Bičev vozel je boljši od kavbojskega, ker se pri enostranski obremenitvi zateguje in ne drsi. Vsebina se lahko tudi vplete.",
+                "V alpinizmu za privezovanje na karabin, za pritrjevanje vrvi na drog, za postavljanje šotora.",
+                "★★★☆☆",
                 R.drawable.vozel_bicev));
         vozli.add(new Vsebina("Osmica",
-                "OPIS: Osmico lahko izdelamo kot osnovno ali kot vpleteno. Primerna je predvsem za varovanje v gorah(plezanje).\n\n",
-                "UPORABA: Spust ob vrvi pri zimski tehniki, pri izdelovanju škripčevja, vrvna ograja, vmesni vozli pri ledeniškem navezovanju.\n",
-                "**",
+                "Osmico lahko izdelamo kot osnovno ali kot vpleteno. Primerna je predvsem za varovanje v gorah(plezanje).",
+                "Spust ob vrvi pri zimski tehniki, pri izdelovanju škripčevja, vrvna ograja, vmesni vozli pri ledeniškem navezovanju.",
+                "★★☆☆☆",
                 R.drawable.vozel_osmica));
-        vozli.add(new Vsebina("Podaljševalni",
-                "OPIS: Služi povezovanju dveh vrvi, ali pa ene same vrvice, da tako dobimo neskončno zanko. Priporočljiva je izdelava s trojnim ovojem.\n\n",
-                "UPORABA: Kadar imamo dve prekratki vrvi, kadar želimo dve vrvi povezati. \n",
-                "****",
-                R.drawable.vozel_podaljsevalni));
-
         vozli.add(new Vsebina("Prusikov",
-                "OPIS: Spada med drsne vozle. Pri obremenitvi se zateguje, če ga razbremenimo, pa ga lahko pomikamo po vrvi, drogu,…  Naredimo ga s tanjšo vrvico na debelejši. Prusikov vozel drži v obe smeri.\n",
-                "UPORABA: Samoreševanje, samovarovanje pri spustu ob vrvi.\n",
-                "****",
+                "Spada med drsne vozle. Pri obremenitvi se zateguje, če ga razbremenimo, pa ga lahko pomikamo po vrvi, drogu,…  Naredimo ga s tanjšo vrvico na debelejši. Prusikov vozel drži v obe smeri.",
+                "Samoreševanje, samovarovanje pri spustu ob vrvi.",
+                "★★★★☆",
                 R.drawable.vozel_prusikov));
+        vozli.add(new Vsebina("Podaljševalni",
+                "Služi povezovanju dveh vrvi, ali pa ene same vrvice, da tako dobimo neskončno zanko. Priporočljiva je izdelava s trojnim ovojem.",
+                "Kadar imamo dve prekratki vrvi, kadar želimo dve vrvi povezati.",
+                "★★★★☆",
+                R.drawable.vozel_podaljsevalni));
 
         return vozli;
     }
@@ -135,42 +134,42 @@ public class Vsebina implements Serializable {
     public ArrayList<Vsebina> getZavetje() {
         ArrayList<Vsebina> zavetje = new ArrayList<>();
         zavetje.add(new Vsebina("Snežna luknja",
-                "Opis: V strmini izkopljemo snežno luknjo v obliki zvona. " +
+                "V strmini izkopljemo snežno luknjo v obliki zvona. " +
                         "Če je snega dovolj, lahko pustimo, da bo streha iz vsaj enega metra snega. " +
                         "Na vrhu vedno naredimo luknjo v premeru vsaj 10 centimetrov, ki" +
                         "e namenjena zračenju. Na koncu dodelajte še vhod. Pustite vhodno luknjo čim manjšo in s tem" +
                         "zmanjšajte izgubo toplote. Če je teren bolj položen, naredimo snežno kočo.",
-                "Uporaba: pozimi, v snegu, na strmejših pobočjih",
-                "*****",
+                "Pozimi, v snegu, na strmejših pobočjih",
+                "★★★★★",
                 R.drawable.zavetje_sneznaluknja));
         zavetje.add(new Vsebina("Snežna koča",
-                "Opis: izkopljemo dovolj veliko luknjo, da bomo v njej lahko sedeli. Luknjo izkopljemo tako, da bomo v " +
+                "Izkopljemo dovolj veliko luknjo, da bomo v njej lahko sedeli. Luknjo izkopljemo tako, da bomo v " +
                         "njej imeli improvizirano klop. Če je snega dovolj, naj bo streha iz snega, drugače nanjo položimo veje" +
                         "ali šotorko.  Na vrhu vedno naredimo luknjo v premeru vsaj 10 centimetrov, ki je namenjena" +
                         "zračenju. Na koncu dodelajte še vhod. Pustite vhodno luknjo čim manjšo in s tem zmanjšajte izgubo" +
                         "toplote.",
-                "Uporaba: pozimi, v snegu, na ravnih predelih",
-                "*****",
+                "Pozimi, v snegu, na ravnih predelih",
+                "★★★★★",
                 R.drawable.zavetje_sneznakoca));
         zavetje.add(new Vsebina("Bivak za eno osebo",
-                "Opis: Začnemo tako, da na eni strani postavimo rogovilo ali dve palici, ki jih med seboj zvežemo. Na" +
+                "Začnemo tako, da na eni strani postavimo rogovilo ali dve palici, ki jih med seboj zvežemo. Na" +
                         "drugo stran na tla postavimo štor ali skalo. Izberemo primerno slemensko palico, ki bo povezovala" +
                         "oba konca. Daljša kot bo palica, daljši bo naš bivak. Ko imamo osnovno konstrukcijo, pričnemo z" +
                         "nalaganjem vej na slemensko palico. Te naj ne segajo preveč nad slemensko palico. Sedaj na našo" +
                         "konstrukcijo naložimo mah, nato lubje. Nadaljujemo s travo, ki jo zvijemo v snope in na koncu še z" +
                         "listjem. Vhod v bivak lahko založimo s svojo opremo ali vejami.",
-                "Uporaba: v vseh letnih časih. Je manjše velikosti in običajno namenjen eni osebi.",
-                "***",
+                "V vseh letnih časih. Je manjše velikosti in običajno namenjen eni osebi.",
+                "★★★☆☆",
                 R.drawable.zavetje_bivakenaoseba));
         zavetje.add(new Vsebina("Bivak s šotorskim krilom",
-                "Opis:  Sestavljen je iz šotorskih kril, ki jih skozi kovinske odprtine povežemo z vrvico. Nato ga v spojih," +
+                "Sestavljen je iz šotorskih kril, ki jih skozi kovinske odprtine povežemo z vrvico. Nato ga v spojih," +
                         "spredaj in zadaj podpremo s palicami in pričvrstimo s klini. Spredaj in zadaj napnemo vrv, zadnjo" +
                         "stran pa zapremo z dodatno šotorko. Bivak je lahko poljubno dolg, odvisno koliko šotorskih kril bomo" +
                         "povezali enega za drugim.",
-                "Uporaba: uporabimo ga običajno na taborjenju. Če nimamo pri sebi  omenjenih materialov, lahko\n" +
+                "Uporabimo ga običajno na taborjenju. Če nimamo pri sebi  omenjenih materialov, lahko\n" +
                         "\n" +
                         "namesto njih uporabimo naravne materiale, ki jih najdemo v bližini.",
-                "**",
+                "★★☆☆☆",
                 R.drawable.zavetje_sotorskakrila));
         return zavetje;
     }

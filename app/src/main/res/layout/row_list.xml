@@ -6,7 +6,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="90dp">
 
         <TextView
             android:id="@+id/tvExperienceTitle"
@@ -15,9 +15,8 @@
             android:layout_gravity="right|center_vertical"
             android:gravity="left|top"
             android:paddingLeft="20dp"
-            android:paddingTop="25dp"
+            android:paddingTop="10dp"
             android:text="Naslov"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#999967"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -29,9 +28,9 @@
             android:layout_gravity="right|center_vertical"
             android:gravity="left|top"
             android:paddingLeft="20dp"
-            android:paddingTop="70dp"
+            android:paddingTop="35dp"
             android:text="Avtor"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="14dp"
             android:textColor="#000000" />
 
     </FrameLayout>

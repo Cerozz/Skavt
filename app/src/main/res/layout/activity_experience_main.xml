@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tvUsername"
+        android:paddingTop="10dp"
         android:text="Seznam izkušenj"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -37,6 +38,7 @@
         android:height="20dp"
         android:background="@drawable/button_izkusnja"
         android:text="Objavi novo izkušnjo"
+        android:textSize="20dp"
         android:textColor="#FFFFFF" />
 
     <TextView
@@ -65,6 +67,7 @@
         android:height="20dp"
         android:background="@drawable/button_izkusnja"
         android:text="Odjavi"
+        android:textSize="20dp"
         android:textColor="#FFFFFF" />
 
 </RelativeLayout>

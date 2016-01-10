@@ -23,7 +23,6 @@
             android:gravity="left|top"
             android:paddingLeft="130dp"
             android:paddingTop="65dp"
-            android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#CCCC9A" />
 
         <TextView
@@ -35,7 +34,6 @@
             android:paddingLeft="130dp"
             android:paddingTop="25dp"
             android:text="naslov"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#999967"
             android:textSize="32sp"
             android:textStyle="bold" />
@@ -49,8 +47,6 @@
             android:paddingLeft="130dp"
             android:paddingTop="70dp"
             android:text=""
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="#000000"
             android:textStyle="bold" />
 
     </FrameLayout>

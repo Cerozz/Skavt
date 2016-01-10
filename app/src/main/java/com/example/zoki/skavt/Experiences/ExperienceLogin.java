@@ -15,15 +15,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.zoki.skavt.About;
-import com.example.zoki.skavt.MainActivity;
 import com.example.zoki.skavt.R;
-
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -81,12 +76,11 @@ public class ExperienceLogin extends AppCompatActivity {
         String loginName = globalVariable.getLoginName();
 
         if (loginName != null) {
-            if(isInternetConnected(getApplicationContext())){
+            if (isInternetConnected(getApplicationContext())) {
                 Intent intent = new Intent(ExperienceLogin.this, ExperienceMain.class);
                 intent.putExtra("USERNAME", loginName);
                 startActivity(intent);
-            }
-            else {
+            } else {
                 globalVariable.setLoginName(null);
 
                 Intent intent = new Intent(ExperienceLogin.this, ExperienceLogin.class);
@@ -159,14 +153,14 @@ public class ExperienceLogin extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            if (result == null){
+            if (result == null) {
 
                 Snackbar snackbar = Snackbar
                         .make(coordinatorLayout, "Ni internetne povezave!", Snackbar.LENGTH_LONG);
-                snackbar.show();;
+                snackbar.show();
+                ;
 
-            }
-            else {
+            } else {
                 if (result.equals("true")) {
                     MojSkavt loginName = (MojSkavt) getApplicationContext();
                     loginName.setLoginName(username);
