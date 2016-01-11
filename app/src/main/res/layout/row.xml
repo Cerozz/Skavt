@@ -21,8 +21,9 @@
             android:layout_height="match_parent"
             android:layout_gravity="right|center_vertical"
             android:gravity="left|top"
-            android:paddingLeft="130dp"
-            android:paddingTop="65dp"
+            android:paddingLeft="110dp"
+            android:paddingRight="10dp"
+            android:paddingTop="55dp"
             android:textColor="#CCCC9A" />
 
         <TextView
@@ -31,11 +32,12 @@
             android:layout_height="match_parent"
             android:layout_gravity="right|center_vertical"
             android:gravity="left|top"
-            android:paddingLeft="130dp"
-            android:paddingTop="25dp"
+            android:paddingLeft="110dp"
+            android:paddingRight="10dp"
+            android:paddingTop="15dp"
             android:text="naslov"
             android:textColor="#999967"
-            android:textSize="32sp"
+            android:textSize="24dp"
             android:textStyle="bold" />
 
         <TextView
@@ -44,9 +46,11 @@
             android:layout_height="match_parent"
             android:layout_gravity="right|center_vertical"
             android:gravity="left|top"
-            android:paddingLeft="130dp"
+            android:paddingLeft="110dp"
+            android:paddingRight="10dp"
             android:paddingTop="70dp"
             android:text=""
+            android:textSize="18dp"
             android:textStyle="bold" />
 
     </FrameLayout>

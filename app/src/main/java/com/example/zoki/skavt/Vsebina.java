@@ -40,31 +40,25 @@ public class Vsebina implements Serializable {
     public ArrayList<Vsebina> getVozli() {
         ArrayList<Vsebina> vozli = new ArrayList<>();
         vozli.add(new Vsebina("Ambulantni",
-                "Ambulantni vozel je sestavljen iz dveh polvozlov. Se ne zatika in zato ga tudi preprosto odvežemo. Znan je po enostavnosti in moči. Če so vrvi gladke, raje uporabimo ribiški ali podaljševalni vozel.",
-                "• Prva pomoč(fiksiranje zlomljenega uda, zavezovanje s trikotno ruto)\n• Pri podaljševanju dveh krajših vrvi, če sta obe vrvi enako široki\n• Ustvarjanje zanke",
+                "Ambulantni vozel je namenjen medsebojnemu povezovanju dveh koncev vrvi. Vozel je precej nestabilen in se ne sme uporabljati za namen varovanja ali pri večjih obremenitvah(izjema je, če na obeh straneh dodamo dodatne zaščitne vozle). Prednosti vozla so enostavnost ter možnost hitrega razdrtja.",
+                "• Prva pomoč pri določenih zavezih in obvezah\n• Povezovanje dveh vrvi\n• Zavezovanje pasov, trakov in zlaganje jader",
                 "★★☆☆☆",
                 R.drawable.vozel_ambulanti));
         vozli.add(new Vsebina("Bičev",
-                "Bičev vozel je boljši od kavbojskega, ker se pri enostranski obremenitvi zateguje in ne drsi. Vsebina se lahko tudi vplete.",
-                "V alpinizmu za privezovanje na karabin, za pritrjevanje vrvi na drog, za postavljanje šotora.",
+                "Bičev vozel je srednje zahteven vozel, ki se najpogosteja uporablja pli plezanju. Prednost bičevega vozla je, da lahko brez izpenjanja prilagodimo dolžino vrvi med nami in vozlom. S tem vozlom se pripenjamo na nevarnem terenu. Ta vozel uporabljajo samo na vrvi, kjer sta oba konca zasedena(npr. na vsakem koncu je pripet plezalec).",
+                "• Plezanje po dolgi poti, ki ima vmesne postaje in varovališča\n• Fiksno sidrišče\n• Pritrditev vrvi v sidrišče\n• Samovarovanje",
                 "★★★☆☆",
                 R.drawable.vozel_bicev));
         vozli.add(new Vsebina("Osmica",
-                "Osmico lahko izdelamo kot osnovno ali kot vpleteno. Primerna je predvsem za varovanje v gorah(plezanje).",
-                "Spust ob vrvi pri zimski tehniki, pri izdelovanju škripčevja, vrvna ograja, vmesni vozli pri ledeniškem navezovanju.",
-                "★★☆☆☆",
+                "Osmica je enostaven vozel ki se primarno uporablja v aplinizmu. Uporabimo ga, ko potrebujemo zanko ali pa končni zaščitni vozel. Poznamo dve izvedbi; Osnovna izvedba, ki jo lahko naprimer uporabimo kot varovalno sredstvo pri spustu na vrvi ter vpletena izvedba, ki ima izboljšano varnost. Zaradi manjše možnosti napake se uporablja pri pritrditvi plezalnega pasu.",
+                "• Spust ob vrvi\n• Pri izdelovanju škripčevja\n• Navezovanje na plezalni pas\n• Izdelava fiksne zanke",
+                "★☆☆☆☆",
                 R.drawable.vozel_osmica));
         vozli.add(new Vsebina("Prusikov",
-                "Spada med drsne vozle. Pri obremenitvi se zateguje, če ga razbremenimo, pa ga lahko pomikamo po vrvi, drogu,…  Naredimo ga s tanjšo vrvico na debelejši. Prusikov vozel drži v obe smeri.",
-                "Samoreševanje, samovarovanje pri spustu ob vrvi.",
+                "Prusikov vozel spada med drsne vozle. Uporablja se za pritrditev tanjše vrvi na večjo(če je možno, v merilu 1:2). Znan je po tem, da izredno drži obremenitev na obeh straneh vrvi. Zaradi tega, ker se med obremenitvijo vse bolj zateguje, je težava vozla, da se po uporabi težko razdre in ga je težko popustiti, da bi ga dodatno pozicionirali. Neuporaben je, ko je vrv zaledenela, saj potrebuje trenje za med vrvema.",
+                "• Reševanje soplezalca in razni reševalni nameni\n• Samovarovanje pri spustu ob vrvi",
                 "★★★★☆",
                 R.drawable.vozel_prusikov));
-        vozli.add(new Vsebina("Podaljševalni",
-                "Služi povezovanju dveh vrvi, ali pa ene same vrvice, da tako dobimo neskončno zanko. Priporočljiva je izdelava s trojnim ovojem.",
-                "Kadar imamo dve prekratki vrvi, kadar želimo dve vrvi povezati.",
-                "★★★★☆",
-                R.drawable.vozel_podaljsevalni));
-
         return vozli;
     }
 
