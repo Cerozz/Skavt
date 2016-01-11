@@ -17,6 +17,9 @@ import android.widget.Toast;
 import com.example.zoki.skavt.About;
 import com.example.zoki.skavt.R;
 
+import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.codec.digest.DigestUtils;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -28,7 +31,7 @@ import java.net.URL;
 public class ExperienceRegister extends AppCompatActivity {
 
     private EditText etRegisterUsername, etRegisterPassword;
-    private TextView tvInfo;
+    private TextView tvLike;
     private String username, password;
     private CoordinatorLayout coordinatorLayout;
 
@@ -40,7 +43,7 @@ public class ExperienceRegister extends AppCompatActivity {
         etRegisterUsername = (EditText) findViewById(R.id.etRegisterUsername);
         etRegisterPassword = (EditText) findViewById(R.id.etRegisterPassword);
 
-        tvInfo = (TextView) findViewById(R.id.tvRegisterInfo);
+        tvLike = (TextView)findViewById(R.id.tvLike);
 
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id
                 .coordinatorLayout);
@@ -52,9 +55,11 @@ public class ExperienceRegister extends AppCompatActivity {
                 username = etRegisterUsername.getText().toString();
                 password = etRegisterPassword.getText().toString();
                 if (!username.isEmpty() && !password.isEmpty()) {
-                    new JSONTaskGet().execute("http://skavtskiprirocnik.azurewebsites.net/api/users/" + username);
+                    new JSONTaskGet().execute("http://skavtskiprirocnikapi.azurewebsites.net/api/users/" + username);
                 } else {
-                    tvInfo.setText("Vpiši vse podatke");
+                    Snackbar snackbar = Snackbar
+                            .make(coordinatorLayout, "Vpiši vse podatke!", Snackbar.LENGTH_LONG);
+                    snackbar.show();
                 }
             }
         });
@@ -132,15 +137,70 @@ public class ExperienceRegister extends AppCompatActivity {
 
             }
             else {
-                if (result.equals("true")) {
+                if (result.equals("false")) {
+
+                    new JSONTaskPostUser().execute("http://skavtskiprirocnikapi.azurewebsites.net/api/users/" + username + "/" +
+                            new String(Hex.encodeHex(DigestUtils.sha256(password))
+                    ));
+
                     Snackbar snackbar = Snackbar
                             .make(coordinatorLayout, "Uspešno dodan uporabnik:" + etRegisterUsername.getText().toString()+ "(simulacija)", Snackbar.LENGTH_LONG);
                     snackbar.show();
                 } else {
-                    tvInfo.setText("To uporabniško ime je že zasedeno");
+                    Snackbar snackbar = Snackbar
+                            .make(coordinatorLayout, "To uporabniško ime je že zasedeno!", Snackbar.LENGTH_LONG);
+                    snackbar.show();
                 }
             }
             
+        }
+    }
+
+    public class JSONTaskPostUser extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            HttpURLConnection connection = null;
+            BufferedReader reader = null;
+            String finalJson = "";
+            try {
+                URL url = new URL(params[0]);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("POST");
+                connection.connect();
+                reader = new BufferedReader(
+                        new InputStreamReader(connection.getInputStream()));
+
+                String line = "";
+                StringBuffer buffer = new StringBuffer();
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line);
+                }
+                finalJson = buffer.toString();
+
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (connection != null)
+                    connection.disconnect();
+                try {
+                    if (reader != null)
+                        reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return finalJson;
+        }
+
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            tvLike.setText("Število všečkov: " + result);
         }
     }
 }
