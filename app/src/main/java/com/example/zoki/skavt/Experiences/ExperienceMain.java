@@ -44,7 +44,7 @@ public class ExperienceMain extends AppCompatActivity {
         username = intent.getStringExtra("USERNAME");
         tvUsername = (TextView) findViewById(R.id.tvUsername);
         tvUsername.setText("Pozdravljen/a: " + username);
-        
+
         Button btnNewExperience = (Button) findViewById(R.id.btnNewExperience);
         btnNewExperience.setOnClickListener(new View.OnClickListener() {
             @Override

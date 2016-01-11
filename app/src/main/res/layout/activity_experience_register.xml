@@ -62,12 +62,5 @@
             android:layout_below="@+id/etRegisterPassword"
             android:text="Potrdi registracijo" />
 
-        <TextView
-            android:id="@+id/tvRegisterInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/btnRegisterConfirm"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
