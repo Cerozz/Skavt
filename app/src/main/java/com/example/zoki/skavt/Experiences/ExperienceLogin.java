@@ -30,7 +30,6 @@ import java.net.URL;
 public class ExperienceLogin extends AppCompatActivity {
 
     private EditText etUsername, etPassword;
-    private TextView tvInfo;
     private String username, password;
 
     private CoordinatorLayout coordinatorLayout;
@@ -42,8 +41,6 @@ public class ExperienceLogin extends AppCompatActivity {
 
         etUsername = (EditText) findViewById(R.id.etPassword);
         etPassword = (EditText) findViewById(R.id.etUsername);
-
-        tvInfo = (TextView) findViewById(R.id.tvInfoLogin);
 
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id
                 .coordinatorLayout);
@@ -58,7 +55,9 @@ public class ExperienceLogin extends AppCompatActivity {
                 if (!username.isEmpty() && !password.isEmpty()) {
                     new JSONTaskGet().execute("http://skavtskiprirocnik.azurewebsites.net/api/users/" + username + "/" + password);
                 } else {
-                    tvInfo.setText("Vpiši vse podatke");
+                    Snackbar snackbar = Snackbar
+                            .make(coordinatorLayout, "Vpiši vse podatke!", Snackbar.LENGTH_LONG);
+                    snackbar.show();
                 }
             }
         });
@@ -158,7 +157,7 @@ public class ExperienceLogin extends AppCompatActivity {
                 Snackbar snackbar = Snackbar
                         .make(coordinatorLayout, "Ni internetne povezave!", Snackbar.LENGTH_LONG);
                 snackbar.show();
-                ;
+
 
             } else {
                 if (result.equals("true")) {
@@ -169,7 +168,9 @@ public class ExperienceLogin extends AppCompatActivity {
                     intent.putExtra("USERNAME", username);
                     startActivity(intent);
                 } else {
-                    tvInfo.setText("Napačno uporabniško ime oz. geslo");
+                    Snackbar snackbar = Snackbar
+                            .make(coordinatorLayout, "Napačno uporabniško ime oz. geslo!", Snackbar.LENGTH_LONG);
+                    snackbar.show();
                 }
             }
 

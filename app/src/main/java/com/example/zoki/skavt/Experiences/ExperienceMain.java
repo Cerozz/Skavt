@@ -44,10 +44,7 @@ public class ExperienceMain extends AppCompatActivity {
         username = intent.getStringExtra("USERNAME");
         tvUsername = (TextView) findViewById(R.id.tvUsername);
         tvUsername.setText("Pozdravljen/a: " + username);
-
-
-        new JSONTaskGet().execute("http://skavtskiprirocnik.azurewebsites.net/api/experiences");
-
+        
         Button btnNewExperience = (Button) findViewById(R.id.btnNewExperience);
         btnNewExperience.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,8 +61,9 @@ public class ExperienceMain extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ExperienceMain.this, ExperienceDetails.class);
                 Experience ex = (Experience) parent.getItemAtPosition(position);
-                intent.putExtra("POSITION", Integer.toString(ex.ExperienceID));
+                intent.putExtra("experience", ex);
                 startActivity(intent);
+
             }
         });
 
@@ -82,6 +80,15 @@ public class ExperienceMain extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        new JSONTaskGet().execute("http://skavtskiprirocnikapi.azurewebsites.net/api/experiences");
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

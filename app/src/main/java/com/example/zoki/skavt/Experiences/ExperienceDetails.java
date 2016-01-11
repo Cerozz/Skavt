@@ -3,50 +3,63 @@ package com.example.zoki.skavt.Experiences;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.zoki.skavt.About;
 import com.example.zoki.skavt.R;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExperienceDetails extends AppCompatActivity {
 
     private Button btnLike;
-    private TextView tvTitle, tvDetails, tvLike, tvAuthor, tvCategory;
+    private TextView tvTitle;
+    private TextView tvDetails;
+    private TextView tvLike;
+    private TextView tvAuthor;
     private int numberOfLikes;
+    private Experience experience;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experience_details);
 
-        Intent intent = getIntent();
-        String ExperienceID = intent.getStringExtra("POSITION");
+        experience = (Experience) getIntent().getSerializableExtra("experience");
 
-        new JSONTaskGet().execute("http://skavtskiprirocnik.azurewebsites.net/api/experiences/" + ExperienceID);
+        tvTitle = (TextView) findViewById(R.id.tvTitle);
+        tvDetails = (TextView) findViewById(R.id.tvDetails);
+        tvLike = (TextView) findViewById(R.id.tvLike);
+        tvAuthor = (TextView) findViewById(R.id.tvAuthor);
+
+        tvTitle.setText(experience.Title);
+        tvAuthor.setText("Avtor: " + experience.Author);
+        tvDetails.setText(experience.Details);
+        numberOfLikes = experience.Likes;
+        tvLike.setText("Število všečkov: " + Integer.toString(numberOfLikes));
+
 
         btnLike = (Button) findViewById(R.id.btnLike);
         btnLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numberOfLikes++;
-                tvLike.setText("Število všečkov: " + Integer.toString(numberOfLikes));
-                btnLike.setEnabled(false);
+                new JSONTaskPostLike().execute("http://skavtskiprirocnikapi.azurewebsites.net/api/likes/" + Integer.toString(experience.ExperienceID));
             }
         });
     }
@@ -67,16 +80,17 @@ public class ExperienceDetails extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public class JSONTaskGet extends AsyncTask<String, ArrayList<Experience>, Experience> {
+    public class JSONTaskPostLike extends AsyncTask<String, Void, String> {
 
         @Override
-        protected Experience doInBackground(String... params) {
+        protected String doInBackground(String... params) {
             HttpURLConnection connection = null;
             BufferedReader reader = null;
-
+            String finalJson = "";
             try {
                 URL url = new URL(params[0]);
                 connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("POST");
                 connection.connect();
                 reader = new BufferedReader(
                         new InputStreamReader(connection.getInputStream()));
@@ -86,12 +100,11 @@ public class ExperienceDetails extends AppCompatActivity {
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line);
                 }
-                String finalJson = buffer.toString();
+                finalJson = buffer.toString();
 
-                final Gson gson = new Gson();
-                Experience ex = gson.fromJson(finalJson, Experience.class);
 
-                return ex;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
@@ -104,25 +117,14 @@ public class ExperienceDetails extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-            return null;
+            return finalJson;
         }
 
 
         @Override
-        protected void onPostExecute(Experience result) {
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            tvTitle = (TextView) findViewById(R.id.tvTitle);
-            tvDetails = (TextView) findViewById(R.id.tvDetails);
-            tvLike = (TextView) findViewById(R.id.tvLike);
-            tvAuthor = (TextView) findViewById(R.id.tvAuthor);
-
-            tvTitle.setText(result.Title);
-            tvAuthor.setText("Avtor: " + result.Author);
-            tvDetails.setText(result.Details);
-            numberOfLikes = result.Likes;
-            tvLike.setText("Število všečkov: " + Integer.toString(numberOfLikes));
-
+            tvLike.setText("Število všečkov: " + result);
         }
     }
-
 }
