@@ -65,24 +65,29 @@ public class Vsebina implements Serializable {
     public ArrayList<Vsebina> getOgnji() {
         ArrayList<Vsebina> ognji = new ArrayList<>();
         ognji.add(new Vsebina("Piramida",
-                "OPIS: V tla zapičimo večjo vejo, okoli nje dodamo netivo, dračje, ter na koncu še debelejša drva.",
-                "**",
+                "V tla na sredino zapičimo večjo vejo. Okoli sredinske veje dodamo netivo, dračje in podobna goreča sredstva. V obliki piramide nato prislonimo srednjo velike veje. V smeri, od koder piha veter, pustimo odprtino, da lahko ogenj prižgemo in mu pustimo dihati.",
+                "• Osnovni ogenj pri gretju manjšega števila ljudi\n• Kot začetni ogenj pri večjih konstrukcijah(npr. pagoda, zvezdasti ogenj...)",
+                "★★☆☆☆",
                 R.drawable.ogenj_piramida));
         ognji.add(new Vsebina("Pagoda",
-                "OPIS: Postavimo ga ob posebnih priložnostih, kot je zaključek tabora in podelitev priznanj. Časovno bolj zahteven. V notranjosti postavimo piramido, okoli nje pa postavimo štiri stranice pagode. Za zunanje stranice uporabimo debelejša drva.",
-                "***",
+                "Pagoda je časovno bolj zahteven ogenj. V notranjosti postavimo piramidni ogenj, okoli njega pa postavimo štiri stranice pagode. Za zunanje stranice uporabimo debelejša drva. Z vsakim slojem zmanjšamo obseg ognja, da se konstrukcija ne podre. Ta vrsta ognja ponavadi da visok plamen, ki enakomerno gori na vseh straneh.",
+                "• Taborjenje\n• Kot osrednji ogenj na večjih prireditvah\n • Kresi",
+                "★★★☆☆",
                 R.drawable.ogenj_pagoda));
         ognji.add(new Vsebina("Zvezdasti",
-                "OPIS: Zelo stara tehnika ognja, ki so jo uporabljali že Indijanci. Okoli ognja položimo debelejša polena, ki segajo v ogenj samo z enim koncem. Polena gorijo počasi, mi pa jih moramo potiskati proti središču ognja. Ogenj gori počasi in dlje časa.",
-                "***",
+                "Zelo stara tehnika ognja, ki so jo uporabljali že Indijanci. Okoli ognja položimo debelejša polena, ki segajo v ogenj samo z enim koncem. Polena gorijo počasi, mi pa jih moramo potiskati proti središču ognja. Ogenj gori počasi in dlje časa. Lahko ga izvedemo preprosto kot veliko večjih polen okoli netiva, ali pa kot večja polena okoli manjšega ognja kot piramidni ogenj(prikazano na sliki). ",
+                "• Ko imamo opravka z večjimi poleni, ki bi pri drugih ognjih težko zagoreli\n• Ko potrebujemo ogenj, ki gori dlje časa\n• Ko potrebujemo dostop do sredice, da lahko dodamo dodatno netivo",
+                "★★★☆☆",
                 R.drawable.ogenj_zvezdasti));
-        ognji.add(new Vsebina("Strešni",
-                "OPIS: Strešni ogenj je podolgovate oblike. Na vsako stran namestimo dve rogovili. Rogovili na vrhu povežemo s slemensko palico, ki je namenjena opori. Nanjo namreč položimo drva. V notranjost položimo netivo in dračje po celi dolžini. Daje močno toploto, uporablja pa se ga predvsem za pečenje.",
-                "****",
-                R.drawable.ogenj_stresni));
+        ognji.add(new Vsebina("Lovski",
+                "Najbolj osnovna oblika ognja. V sredini postavimo netivo, manjše palice in stvari, ki nam pomagajo ogenj vneti na začetku. Okoli sredice postavimo dve debelejši poleni, ki služita dvem funkcijam; Kontrolirata pretok zraka preko odprtih koncev in služita kot podloga, na katero odložimo kotliček ali posodo.",
+                "• Ko smo časovno omejeni in potrebujemo hitro postavitev\n• Ko želimo razkužiti vodo ali kuhati v posodi\n• Kot naravna alternative, ko nimamo opreme kot gorilnik",
+                "★☆☆☆☆",
+                R.drawable.ogenj_lovski));
         ognji.add(new Vsebina("Stražni",
-                "OPIS: Naredimo osnoven ogenj po izbiri. Ob ognju postavimo lojtro, na katero naložimo polena. Ta polena naj bodo čim bolj okrogla. Ko poleno v ognju dogori, se vsa naložena polena premaknejo bližje ognju. Ogenj gori dolgo časa. Uporablja se kot za ogrevanje ali stražo čez celo noč.",
-                "*****",
+                "Naredimo osnoven ogenj po izbiri. Ob ognju postavimo lojtro, na katero naložimo polena. Ta polena naj bodo čim bolj okrogla. Ko poleno v ognju dogori, se vsa naložena polena premaknejo bližje ognju. Ogenj gori dolgo časa. Uporablja se kot za ogrevanje ali stražo čez celo noč.",
+                "• Ko želimo dolgogoreči ogenj, kateremu lahko za dodatno gorenje samo priložimo polena\n• Ko imamo na voljo samo polena, ki niso dosti dolga za zvezdasti ogenj\n• Kot stražni/nočni ogenj",
+                "★★★★★",
                 R.drawable.ogenj_strazni));
         return ognji;
     }
@@ -131,28 +136,28 @@ public class Vsebina implements Serializable {
                 "V strmini izkopljemo snežno luknjo v obliki zvona. " +
                         "Če je snega dovolj, lahko pustimo, da bo streha iz vsaj enega metra snega. " +
                         "Na vrhu vedno naredimo luknjo v premeru vsaj 10 centimetrov, ki" +
-                        "e namenjena zračenju. Na koncu dodelajte še vhod. Pustite vhodno luknjo čim manjšo in s tem" +
-                        "zmanjšajte izgubo toplote. Če je teren bolj položen, naredimo snežno kočo.",
-                "Pozimi, v snegu, na strmejših pobočjih",
+                        "je namenjena zračenju. Na koncu dodelajte še vhod. Pustite vhodno luknjo čim manjšo in s tem" +
+                        "zmanjšajte izgubo toplote. Če je teren bolj položen, naredimo snežno kočo(najdete jo v meniju). Če je več ljudi, lahko naredite več posameznih lukenj, ali pa, bolj priporočljivo, naredito eno večjo, saj vas bo medsebojna toplota še bolj grela.",
+                "• Pozimi\n• V globokem in trdnem snegu\n• Na strmejših pobočjih",
                 "★★★★★",
                 R.drawable.zavetje_sneznaluknja));
         zavetje.add(new Vsebina("Snežna koča",
                 "Izkopljemo dovolj veliko luknjo, da bomo v njej lahko sedeli. Luknjo izkopljemo tako, da bomo v " +
                         "njej imeli improvizirano klop. Če je snega dovolj, naj bo streha iz snega, drugače nanjo položimo veje" +
-                        "ali šotorko.  Na vrhu vedno naredimo luknjo v premeru vsaj 10 centimetrov, ki je namenjena" +
+                        "ali šotorsko krilo.  Na vrhu vedno naredimo luknjo v premeru vsaj 10 centimetrov, ki je namenjena" +
                         "zračenju. Na koncu dodelajte še vhod. Pustite vhodno luknjo čim manjšo in s tem zmanjšajte izgubo" +
                         "toplote.",
-                "Pozimi, v snegu, na ravnih predelih",
-                "★★★★★",
+                "• Pozimi\n• V globokem snegu\n• Na ravnih predelih",
+                "★★★★☆",
                 R.drawable.zavetje_sneznakoca));
         zavetje.add(new Vsebina("Bivak za eno osebo",
-                "Začnemo tako, da na eni strani postavimo rogovilo ali dve palici, ki jih med seboj zvežemo. Na" +
-                        "drugo stran na tla postavimo štor ali skalo. Izberemo primerno slemensko palico, ki bo povezovala" +
-                        "oba konca. Daljša kot bo palica, daljši bo naš bivak. Ko imamo osnovno konstrukcijo, pričnemo z" +
-                        "nalaganjem vej na slemensko palico. Te naj ne segajo preveč nad slemensko palico. Sedaj na našo" +
-                        "konstrukcijo naložimo mah, nato lubje. Nadaljujemo s travo, ki jo zvijemo v snope in na koncu še z" +
+                "Začnemo tako, da na eni strani postavimo dve palici, ki jih med seboj na koncu zvežemo. Na" +
+                        "drugo stran na tla postavimo štor, skalo ali podoben pripomoček. Izberemo primerno slemensko palico, ki bo povezovala" +
+                        "oba konca, od skale na koncu do dveh prednjih palic. Daljša kot bo palica, daljši bo naš bivak. Priporočeno je, da je dolga vsaj toliko kolikor ste visoki. Ko imamo osnovno konstrukcijo, pričnemo z" +
+                        "nalaganjem vej na slemensko palico. Veje zložimo eno zraven druge in naj ne segajo preveč nad slemensko palico. Sedaj na našo" +
+                        "konstrukcijo naložimo mah, nato lubje, ki bosta izboljšala zadrževanje toplote v bivaku. Nadaljujemo s travo, ki jo zvijemo v snope in na koncu še z" +
                         "listjem. Vhod v bivak lahko založimo s svojo opremo ali vejami.",
-                "V vseh letnih časih. Je manjše velikosti in običajno namenjen eni osebi.",
+                "• V vseh letnih časih\n• Bivak za eno osebo\n• Improvizacijsko zavetje, ki ga uporabimo, ko nimamo primerne opreme(npr. šotor)",
                 "★★★☆☆",
                 R.drawable.zavetje_bivakenaoseba));
         zavetje.add(new Vsebina("Bivak s šotorskim krilom",
@@ -160,9 +165,7 @@ public class Vsebina implements Serializable {
                         "spredaj in zadaj podpremo s palicami in pričvrstimo s klini. Spredaj in zadaj napnemo vrv, zadnjo" +
                         "stran pa zapremo z dodatno šotorko. Bivak je lahko poljubno dolg, odvisno koliko šotorskih kril bomo" +
                         "povezali enega za drugim.",
-                "Uporabimo ga običajno na taborjenju. Če nimamo pri sebi  omenjenih materialov, lahko\n" +
-                        "\n" +
-                        "namesto njih uporabimo naravne materiale, ki jih najdemo v bližini.",
+                "• Na taborjenjih\n• Ko imamo pri sebi potrebno opremo\n• Če opreme ni, lahko improviziramo z naravnimi pripomočki(bivak za eno osebo)",
                 "★★☆☆☆",
                 R.drawable.zavetje_sotorskakrila));
         return zavetje;
