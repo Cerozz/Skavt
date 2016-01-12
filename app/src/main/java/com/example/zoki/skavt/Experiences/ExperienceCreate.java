@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.EditText;
 
 import com.example.zoki.skavt.About;
 import com.example.zoki.skavt.R;
@@ -21,6 +21,7 @@ import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -31,17 +32,24 @@ import java.util.ArrayList;
 public class ExperienceCreate extends AppCompatActivity {
 
     private CoordinatorLayout coordinatorLayout;
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experience_create);
 
+        Intent intent = getIntent();
+        username = intent.getStringExtra("USERNAME");
+
+        final EditText etTitle = (EditText)findViewById(R.id.etNewExperienceTitle);
+        final EditText etDetails = (EditText)findViewById(R.id.etNewExperienceDetails);
+
         Button postExperience = (Button) findViewById(R.id.btnPostExperience);
         postExperience.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new JsonTaskPost().execute("http://skavtskiprirocnik.azurewebsites.net/api/experiences/");
+                new JsonTaskExperiencePost().execute("http://skavtskiprirocnikapi.azurewebsites.net/api/experiences/" + etTitle.getText().toString() + "/" + etDetails.getText().toString() + "/" + username);
             }
         });
     }
@@ -62,52 +70,56 @@ public class ExperienceCreate extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public class JsonTaskPost extends AsyncTask<String, ArrayList<Experience>, ArrayList<Experience>> {
+    public class JsonTaskExperiencePost extends AsyncTask<String, Void, String> {
 
         @Override
-        protected ArrayList<Experience> doInBackground(String... params) {
+        protected String doInBackground(String... params) {
             HttpURLConnection connection = null;
             BufferedReader reader = null;
-            String message = new JSONObject().toString();
-            InputStream is = null;
+            String finalJson = "";
             try {
-                URL url = new URL(params[0]);
+                URL url = new URL(params[0].replace(" ", "%20"));
+
                 connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("POST");
-                connection.setDoInput(true);
-                connection.setDoOutput(true);
-                connection.setRequestProperty("Content-Type", "application/json");
                 connection.connect();
+                reader = new BufferedReader(
+                        new InputStreamReader(connection.getInputStream()));
 
-
-                //setup send
-                OutputStream os = new BufferedOutputStream(connection.getOutputStream());
-                os.write(message.getBytes());
-                //clean up
-                os.flush();
+                String line = "";
+                StringBuffer buffer = new StringBuffer();
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line);
+                }
+                finalJson = buffer.toString();
 
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
-            } catch (ProtocolException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
-                connection.disconnect();
+                if (connection != null)
+                    connection.disconnect();
+                try {
+                    if (reader != null)
+                        reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-            return null;
+            return finalJson;
         }
 
 
         @Override
-        protected void onPostExecute(ArrayList<Experience> result) {
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
             coordinatorLayout = (CoordinatorLayout) findViewById(R.id
                     .coordinatorLayout);
             Snackbar snackbar = Snackbar
-                    .make(coordinatorLayout, "Izkušnja je bila objavljena! (simulacija objave)", Snackbar.LENGTH_LONG);
+                    .make(coordinatorLayout, "Izkušnja je bila objavljena!", Snackbar.LENGTH_LONG);
             snackbar.show();
 
         }

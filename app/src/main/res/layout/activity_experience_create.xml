@@ -38,7 +38,7 @@
             android:textSize="20dp" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/etNewExperienceTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -47,14 +47,13 @@
             android:hint="Naslov" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/etNewExperienceDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/editText"
+            android:layout_below="@+id/etNewExperienceTitle"
             android:hint="Besedilo"
             android:inputType="textMultiLine" />
-
 
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

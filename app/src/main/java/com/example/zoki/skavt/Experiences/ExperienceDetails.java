@@ -3,6 +3,8 @@ package com.example.zoki.skavt.Experiences;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -35,11 +37,20 @@ public class ExperienceDetails extends AppCompatActivity {
     private TextView tvAuthor;
     private int numberOfLikes;
     private Experience experience;
+    private Button btnDelete;
+    private CoordinatorLayout coordinatorLayout;
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experience_details);
+
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id
+                .coordinatorLayout);
+
+        Intent intent = getIntent();
+        username = intent.getStringExtra("USERNAME");
 
         experience = (Experience) getIntent().getSerializableExtra("experience");
 
@@ -55,11 +66,27 @@ public class ExperienceDetails extends AppCompatActivity {
         tvLike.setText("Število všečkov: " + Integer.toString(numberOfLikes));
 
 
+
         btnLike = (Button) findViewById(R.id.btnLike);
         btnLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new JSONTaskPostLike().execute("http://skavtskiprirocnikapi.azurewebsites.net/api/likes/" + Integer.toString(experience.ExperienceID));
+            }
+        });
+
+        btnDelete = (Button)findViewById(R.id.btnDelete);
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(experience.Author.equals(username)){
+                    new JsonTaskDeleteExperience().execute("http://skavtskiprirocnikapi.azurewebsites.net/api/experiences/" +Integer.toString(experience.ExperienceID));
+                }
+                else{
+                    Snackbar snackbar = Snackbar
+                            .make(coordinatorLayout, "Odstranite lahko le svoje izkušnje!", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
             }
         });
     }
@@ -125,6 +152,59 @@ public class ExperienceDetails extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             tvLike.setText("Število všečkov: " + result);
+        }
+    }
+
+    public class JsonTaskDeleteExperience extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            HttpURLConnection connection = null;
+            BufferedReader reader = null;
+            String finalJson = "";
+            try {
+                URL url = new URL(params[0]);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("DELETE");
+                connection.connect();
+                reader = new BufferedReader(
+                        new InputStreamReader(connection.getInputStream()));
+
+                String line = "";
+                StringBuffer buffer = new StringBuffer();
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line);
+                }
+                finalJson = buffer.toString();
+
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (connection != null)
+                    connection.disconnect();
+                try {
+                    if (reader != null)
+                        reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return finalJson;
+        }
+
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            if (result.equals("true"))
+            {
+                Intent intent = new Intent(ExperienceDetails.this, ExperienceMain.class);
+                intent.putExtra("USERNAME", username);
+                startActivity(intent);
+            }
         }
     }
 }

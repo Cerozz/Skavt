@@ -50,6 +50,7 @@ public class ExperienceMain extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ExperienceMain.this, ExperienceCreate.class);
+                intent.putExtra("USERNAME", username);
                 startActivity(intent);
             }
         });
@@ -61,6 +62,7 @@ public class ExperienceMain extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ExperienceMain.this, ExperienceDetails.class);
                 Experience ex = (Experience) parent.getItemAtPosition(position);
+                intent.putExtra("USERNAME", username);
                 intent.putExtra("experience", ex);
                 startActivity(intent);
 
