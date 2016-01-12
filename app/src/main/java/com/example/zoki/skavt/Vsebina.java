@@ -8,6 +8,8 @@ public class Vsebina implements Serializable {
     public String ime;
     public String opis;
     public String uporaba;
+    public String[] kat;
+    public String[] opisArr;
     public String zahtevnost;
     public int slika;
 
@@ -29,11 +31,12 @@ public class Vsebina implements Serializable {
         this.zahtevnost = zahtevnost;
     }
 
-    public Vsebina(String ime, String opis, String uporaba, String zahtevnost) {
+    public Vsebina(String ime, String[] kategorije, String[] opisi, int slika, String zahtevnost) {
         this.ime = ime;
-        this.opis = opis;
-        this.uporaba = uporaba;
+        this.kat = kategorije;
+        this.opisArr = opisi;
         this.zahtevnost = zahtevnost;
+        this.slika = slika;
     }
 
 
@@ -95,37 +98,29 @@ public class Vsebina implements Serializable {
     public ArrayList<Vsebina> getOrientacije() {
         ArrayList<Vsebina> orientacije = new ArrayList<>();
         orientacije.add(new Vsebina("Kompas",
-                "Kompas je naprava s prosto vrtečo magnetno iglo za določanje smeri neba.\n" +
-                        "Uporabe:\n" +
-                        "- določanje smeri neba\n" +
-                        "- orientacija glede na topografsko karto\n" +
-                        "- smerni kot ali azimut in razdalja poljubne točke na območju\n\n " +
-                        "UPORABA: Kompas ima magnetno iglo, ki se vedno obrne proti magnetnemu severu. Ta nekoliko odstopa od dejanskega geografskega severa, vendar odstopanje ni veliko. Pazljivi moramo biti na oznake na kompasu. Če so oznake angleške (N, E, S, W), je sever označen s črko N. " +
+                "Kompas je naprava z magnetno iglo, ki nam pomaga določiti strani neba. Magnetna igla se poravna glede na magnetni sever, ki ni nujno isti kot geografski sever, zaradi česa se za večje natančnosti uporabljajo korekcijske formule." +
+                        " Pazljivi moramo biti na oznake na kompasu. Če so oznake angleške (N, E, S, W), je sever označen s črko N. " +
                         "Če so oznake slovenske(S, V, J, Z), sever označuje črka S. Na smer igle lahko vplivajo tudi druga magnetna polja, ki jih povzročajo daljnovodi, električni aparati in kovinski predmeti. Poskrbeti moramo, da teh stvari ni v bližini.\n",
-                "false",
+                "• Določanje smeri neba\n• Orientacija glede na karte in zemljevide",
+                "★☆☆☆☆",
                 R.drawable.orientacija_kompas));
         orientacije.add(new Vsebina("Zvezde",
-                "V jasnih nočeh se najbolje orientiramo po zvezdi Severnici. Najprej poiščemo veliki voz. To ozvezdje stalno kroži okrog severnega nebesnega pola in v naših krajih nikoli ne zaide. Isto velja za zvezdo Severnico. " +
+                "V jasnih nočeh se najbolje orientiramo po zvezdi Severnici. Najprej poiščemo veliki voz. To ozvezdje stalno kroži okoli severnega nebesnega pola in v naših krajih nikoli ne zaide. Isto velja za zvezdo Severnico. " +
                         "Razdaljo med zvezdama zadnje osi velikega voza petkrat podaljšamo in tako pridemo do močne zvezde Severnice, ki nam določa točno smer na sever.",
-                "false",
+                "• Ko so vidne zvezde\n• Ko imamo zadostno znanje o zvezdah za identificiranje Severnice",
+                "★★☆☆☆",
                 R.drawable.orientacija_severnica));
-        orientacije.add(new Vsebina("Luna",
-                "- mlaj se vidi po zahodu sonca ob 18h na Z\n" +
-                        "- prvi krajec je okrog 18h na J, ob 24h na Z\n" +
-                        "- polna luna vzhaja po zahodu sonca ob 18h na V, ob 24h na J, ob 6h pa na Z.\n" +
-                        "- zadnji krajec vzhaja ob 24h na V, ob 6h je na J, ob 12h je na Z\n",
-                "false",
-                R.drawable.orientacija_luna));
-        orientacije.add(new Vsebina("Navigacija ostalo",
-                " podnevi si lahko pomagamo s Soncem. Sonce je opoldne najvišje na obzorju. Senca je takrat najkrajša in kaže proti severu.\n" +
-                        "- drevesna debla so na severu bolj poraščena z mahom\n" +
-                        "- razmiki med letnicami na štorih so proti severu manjši\n" +
-                        "- krošnje dreves so proti jugu bolj bujne\n" +
-                        "- mravljišča so proti jugu položnejša\n" +
-                        "- mravljišča so na južni strani dreves\n" +
-                        "- sneg se dlje obdrži na severnih pobočjih\n",
-                "false",
-                R.drawable.orientacija_mlaj));
+        orientacije.add(new Vsebina("Dodatna znanja",
+                "• Podnevi si lahko pomagamo s Soncem, ki je najvišje na obzorjo točno ob opoldne. Senca je takrat najkrajša in kaže proti severu.\n" +
+                        "• Drevesna debla so na severu bolj poraščena z mahom\n" +
+                        "• Razmiki med letnicami na štorih so proti severu manjši\n" +
+                        "• Krošnje dreves so proti jugu bolj bujne\n" +
+                        "• Mravljišča so proti jugu položnejša\n" +
+                        "• Mravljišča so na južni strani dreves\n" +
+                        "• Sneg se dlje obdrži na severnih pobočjih\n",
+                "• Splošno znanje",
+                "☆☆☆☆☆",
+                R.drawable.books));
 
         return orientacije;
     }
@@ -173,44 +168,28 @@ public class Vsebina implements Serializable {
 
     public ArrayList<Vsebina> getNasveti() {
         ArrayList<Vsebina> nasveti = new ArrayList<>();
-        nasveti.add(new Vsebina("Sledovi živali",
-                "",
-                "",
-                "false",
-                R.drawable.nasveti_sledi));
-        nasveti.add(new Vsebina("Listi dreves",
-                "-smreka:  Iglice so dolge od 10-25 milimetrov, ter so ravne. Na koncu vej rastejo spodaj podolgovati storži, ki so obrnjeni navzdol.\n" +
-                        "-jelka: Iglice so dolge 15 - 30 mm, razporejene v dveh vrstah, ploske, zgoraj bleščeče temno zelene, spodaj z dvema belima progama. Storži rastejo navzgor, dolgi 10 - 16 cm in razpadejo na drevesu.\n" +
-                        "\n" +
-                        "-bukev: Listi so enostavni, celorobi in bleščeče zeleni, dolžine od 5-12 cm in širine od 3-8 cm, s 5-9 parov listnih žil. ima plodove imenovane žir. To so majhne kroglice, ki imajo dlačice, majhne bodičke in so rjave barve.\n" +
-                        "-hrast: Listi imajo navadno priostrene konice režnjev s ščetinami.  Cvetove, ki se razvijejo spomladi, imenujemo mačice. Plod, ki ga imenujemo želod, je orešek in zraste v čašasti strukturi, imenovani kapica.\n" +
-                        "-lipa: Listi: srčaste oblike, pecljati, dolgi nad 8 cm. Plod: majhni oreški s pecljem, ki se konča s krilcem; pokriti so z debelo lupino, ki ima pet močno vidnih robov\n" +
-                        "-breza:  Poznamo jo po beli skorji. Enostavni listi so lahko nažagani ali režnjati. Plod breze je krilati orešek, ki pa ima pri nekaterih vrsta zelo drobna krilca.\n",
-                "",
-                "false"
-        ));
         nasveti.add(new Vsebina("Prva pomoč",
-                "Opis: Opekline:\n" +
-                        "- rano hladimo s hladno vodo, ki blaži bolečino in preprečuje nadaljnje poškodbe. Na rano ne dajemo ledu.\n" +
-                        "- na rano ne dajemo ledu\n" +
-                        "-rane ne mažemo z mazili\n" +
-                        "Žulji:\n" +
-                        "- če nas ožuli, je pomembno, da se čim prej preobujemo\n" +
-                        "- pribor za oskrbo naj bo sterilen\n" +
-                        "-manjše žulje premažemo z ustreznim mazilom in prekrijemo z obližem\n" +
-                        "- večje in moteče žulje predremo z iglo, ki jo pred tem očistimo z medicinskim alkoholom, ter jo za nekaj sekund držimo nad vročim ognjem. Preboden žulj prekrijemo s sterilno gazo\n" +
-                        "Rane in krvavitve:\n" +
-                        "- vedno imamo čiste roke in pripomočke\n" +
-                        "-  površinske rane izpiramo s tekočo vodo in prekrijemo s sterilno gazo ali obližem\n" +
-                        "-  če iz rane krvavi zaustavimo prekrvavitev s kompresijsko obvezo ali neposrednim pritiskom s prsti preko gaze\n" +
-                        "- ranjeni del telesa ali ud mora mirovati\n" +
-                        "Piki žuželk:\n" +
-                        "- če je pri piku čebele v koži ostalo želo, ga odstranimo\n" +
-                        "- pik speremo pod tekočo vodo, osušimo in pohladimo z ledom. Ledu ne dajemo neposredno na kožo\n" +
-                        "- nanesemo gel za oskrbo kože po pikih\n" +
-                        "- v primeru alergijske reakcije moramo imeti ob sebi ustrezno zdravo\n",
-                "Uporaba: v vseh letnih časih. Je manjše velikosti in običajno namenjen eni osebi.",
-                "false"));
+                new String[]{"Opekline", "Žulji", "Rane in krvavitve", "Piki žuželk"},
+                new String[]{"◦ Rano hladimo s hladno vodo, ki blaži bolečino in preprečuje nadaljnje poškodbe. Na rano ne dajemo ledu.\n◦ Na rano ne dajemo ledu\n◦ Rane ne mažemo z raznimi mazili\n",
+                        "◦ Če nas ožuli, je pomembno, da se čim prej preobujemo\n◦ Pribor za oskrbo žulja naj bo sterilen\n◦ Manjše žulje premažemo z ustreznim mazilom in prekrijemo z obližem\n◦ Večje in moteče žulje predremo z iglo, ki jo pred tem očistimo, da je sterilna. Preboden žulj prekrijemo s sterilno gazo\n",
+                        "◦  Vedno imamo čiste roke in pripomočke\n◦  Površinske rane izpiramo s tekočo vodo in prekrijemo s sterilno gazo ali obližem\n◦  Če iz rane krvavi zaustavimo prekrvavitev s kompresijsko obvezo ali neposrednim pritiskom s prsti preko gaze\n◦  Ranjeni del telesa ali ud mora mirovati\n",
+                        "◦ Če je pri piku čebele v koži ostalo želo, ga odstranimo\n◦ Pik speremo pod tekočo vodo, osušimo in pohladimo z ledom. Ledu ne dajemo neposredno na kožo\n◦ Nanesemo gel za oskrbo kože po pikih\n◦ V primeru alergijske reakcije moramo imeti ob sebi ustrezno zdravo\n"},
+                R.drawable.medic,
+                "opis"));
+        nasveti.add(new Vsebina("Hidracija",
+                new String[]{"Hidracija telesa", "Prečiščevanje vode", "Iskanje vode v naravi"},
+                new String[]{"◦ Telo lahko v najhujših razmerah zgubi tudi po 4 litre vode na dan, tako da je redna hidracija vedno obvezna\n◦ Najboljšo hidriranje nam omogoča navadna voda, saj nima dodatnih elemntov kot sladkor",
+                        "◦ Osnovno filtriranje(npr. čez del oblačila) ne filtrira vode dokončno, vendar je hitra rešitev za zmanjšanje škodljivih delcev in izboljšanje okusa\n◦ Prevretje vode je najbol uporabljena tehnika prečiščevanja vode. Ubije skoraj vse bakterije, vendar ni nujno da odstrani kemično onesnaženost\n◦ Najbolj varno prečiščevanje je z raznimi prečiščevalnimi tabletami za vodo ki jo najdemo v veliko lovskih trgovinah",
+                        "◦ Najboljša možnost za naravni vir vode so razne doline, kamor se voda naravno iztaka\n◦ Ptice pogosto krožijo nad virom vode\n◦ V hudih pokrajinah kot puščave, je izrazito zeleno rastje znak vode"},
+                R.drawable.water,
+                "opis"));
+        nasveti.add(new Vsebina("Preživetje",
+                new String[]{"Prioritete preživetja", "Signalizacija", "Splošni nasveti"},
+                new String[]{"◦ Za daljše preživetje v naravi, rabimo za varnost kot toploto najprej zgraditi zavetje in ogenj\n◦ Človek lahko brez vode zdrži 3 dni, zato je zelo pomembno da v prvih dneh najdete vir vode\n◦ Brez hrane lahko zdržimo do 30 dni. Osnovno lahko preživimo na živilih kot sadje, vendar je ob dolgoročnem preživetju potrebno zaužiti tudi proteine(npr. meso)\n◦ Če imate energijo, poskrbite da vas je v primeru reševalne akcije lahko videti",
+                "◦ Da vas lahko iskalne partije najdejo, rabite poskrbeti da vas je enostavno videti oz. zaznati\n◦ Kot svetlobno signalno sredstvo lahko uporabite ogledalo, ogenj ali pa svetilko(ki jo najdete tudi v aplikaciji). V najhujšem primeru lahko iz lesa ali kamnov črkujete SOS.\n◦ Kot zvočno sredstvo lahko uporabite razne pripomočke kot piščalka, hupa ali celo strelna orožja",
+                "◦ Poskrbite da se vedno odpravite z zadostno količino opreme kot so noži, svetilke, vrvi in ostala orodja ki znajo biti razlika med življenjem in smrtjo v najhujšem primeru\n◦ Dobro preučite obsežnost vašega izleta in primerno pripravite količino  vode in hrane. Če možno, vzemite tudi nekaj rezerve.\n◦ Pred izletom se pozanimajte o ciljni pokrajini, da ste pripravljeni za vse možne situaciji"},
+                R.drawable.bonfire,
+                "opis"));
         return nasveti;
     }
 }

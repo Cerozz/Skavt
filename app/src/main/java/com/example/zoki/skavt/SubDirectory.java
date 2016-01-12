@@ -23,7 +23,7 @@ public class SubDirectory extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subdirectory);
-        String title = getIntent().getExtras().getString("ime");
+        final String title = getIntent().getExtras().getString("ime");
         setTitle(title);
 
         if (title.equals("Vozli")) {
@@ -47,9 +47,15 @@ public class SubDirectory extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Vsebina vs = vsebina.get(position);
-                        Intent start = new Intent(SubDirectory.this, Element.class);
-                        start.putExtra("Vsebina", vs);
-                        startActivity(start);
+                        if (title.equals("Nasveti")) {
+                            Intent start = new Intent(SubDirectory.this, ElementAlt.class);
+                            start.putExtra("Vsebina", vs);
+                            startActivity(start);
+                        } else {
+                            Intent start = new Intent(SubDirectory.this, Element.class);
+                            start.putExtra("Vsebina", vs);
+                            startActivity(start);
+                        }
                     }
                 }
         );

@@ -32,7 +32,19 @@ public class Adapter_contentmenu extends ArrayAdapter<Vsebina> {
         TextView difficulty = (TextView) customView.findViewById(R.id.tvDifficulty);
         ImageView slika = (ImageView) customView.findViewById(R.id.imageView);
         text.setText(vsebina.ime);
-        if (!vsebina.zahtevnost.equals("false")) {
+        if(vsebina.zahtevnost.equals("opis")){
+            difficulty.setTextSize(14);
+            if(vsebina.ime.equals("Hidracija")){
+                difficulty.setText("Nasveti za pravilno hidracijo, prečiščevanje vode...");
+            }
+            else if (vsebina.ime.equals("Prva pomoč")){
+                difficulty.setText("Nasveti pri uporabi prve pomoči za največjo učinkovitost");
+            }
+            else{
+                difficulty.setText("Splošni nasveti za pomoč pri preživetju v primeru, da ste se znašli v slabi situaciji");
+            }
+        }
+        else if (!vsebina.zahtevnost.equals("false")) {
             difficulty.setText("Zahtevnost: " + vsebina.zahtevnost);
         }
         if (vsebina.slika > 0) {
