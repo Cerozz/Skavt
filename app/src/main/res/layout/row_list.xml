@@ -30,8 +30,8 @@
             android:paddingLeft="20dp"
             android:paddingTop="35dp"
             android:text="Avtor"
-            android:textSize="14dp"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textSize="14dp" />
 
     </FrameLayout>
 

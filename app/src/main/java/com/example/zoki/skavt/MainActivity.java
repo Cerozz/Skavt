@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         String[] poglavja = {"Vozli", "Zavetje", "Ognji", "Orientacija", "Nasveti", "Deli izkušnje", "Svetilka"};
         int[] slike = {R.drawable.rope, R.drawable.home, R.drawable.flames, R.drawable.compass, R.drawable.books, R.drawable.social, R.drawable.flashlight};
-        String[] opisi = {"O vozlih, kako jih naredimo in čemu so namenjeni", "Gradnja učinkovitega zavetja", "Različni ognji in njihovi nameni", "Kako uporabiti navigacijske zemljevide in kompas", "Koristno znanje za vsakogar", "Objavi svoje izkušnje \n(potrebuje internetno povezavo)", "Svetilka za temne dni"};
+        String[] opisi = {"Informacije o raznih vozlih, čemu so namenjeni, prednosti ter postopki izdelave", "Informacije o zavetjih, kdaj jih uporabimo, za koliko ljudi služijo in njihove prednosti", "Različni ognji, njihove prednosti, priprava ter njihov nameni", "Pomoč pri navigaciji z uporabo kompasa, navigacijskih kart ter zvezd in planetov", "Dodatni nasveti in znanja kot prva pomoč, sledi živali in podobno", "Platforma za branje in deljenje izkušenj(potrebuje internetno povezavo)", "Uporaba bliskavice kot svetilka in možnost svetlobnega SOS signala"};
         ListAdapter adapter = new Adapter(this, poglavja, slike, opisi);
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
