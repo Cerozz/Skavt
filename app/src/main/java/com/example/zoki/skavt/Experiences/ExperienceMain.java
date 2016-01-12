@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.zoki.skavt.About;
@@ -32,6 +33,7 @@ public class ExperienceMain extends AppCompatActivity {
     private ListView lvExperiences;
     private String username;
     private TextView tvUsername;
+    private ProgressBar spinner;
 
     private ArrayList<Experience> experiences;
 
@@ -44,6 +46,10 @@ public class ExperienceMain extends AppCompatActivity {
         username = intent.getStringExtra("USERNAME");
         tvUsername = (TextView) findViewById(R.id.tvUsername);
         tvUsername.setText("Pozdravljen/a: " + username);
+
+        spinner = (ProgressBar)findViewById(R.id.pbExperiences);
+
+        spinner.setVisibility(View.VISIBLE);
 
         Button btnNewExperience = (Button) findViewById(R.id.btnNewExperience);
         btnNewExperience.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +92,7 @@ public class ExperienceMain extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-
+        spinner.setVisibility(View.VISIBLE);
         new JSONTaskGet().execute("http://skavtskiprirocnikapi.azurewebsites.net/api/experiences");
     }
 
@@ -155,6 +161,8 @@ public class ExperienceMain extends AppCompatActivity {
         @Override
         protected void onPostExecute(ArrayList<Experience> result) {
             super.onPostExecute(result);
+
+            spinner.setVisibility(View.GONE);
 
             ListView lvExperiences = (ListView) findViewById(R.id.lvExperiences);
             ExperienceAdapter adapter = new ExperienceAdapter(ExperienceMain.this, result);

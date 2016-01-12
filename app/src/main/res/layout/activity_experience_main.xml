@@ -70,4 +70,13 @@
         android:textColor="#FFFFFF"
         android:textSize="20dp" />
 
+    <ProgressBar
+        android:id="@+id/pbExperiences"
+        style="@android:style/Widget.ProgressBar.Inverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/scrollView"
+        android:layout_centerHorizontal="true"
+        />
+
 </RelativeLayout>
