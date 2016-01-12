@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.zoki.skavt.About;
 import com.example.zoki.skavt.R;
@@ -55,7 +54,8 @@ public class ExperienceRegister extends AppCompatActivity {
                 username = etRegisterUsername.getText().toString();
                 password = etRegisterPassword.getText().toString();
                 if (!username.isEmpty() && !password.isEmpty()) {
-                    new JSONTaskGet().execute("http://skavtskiprirocnikapi.azurewebsites.net/api/users/" + username);
+                    password = new String(Hex.encodeHex(DigestUtils.sha256(password)));
+                    new JSONTaskCheckUsername().execute("http://skavtskiprirocnikapi.azurewebsites.net/api/users/" + username);
                 } else {
                     Snackbar snackbar = Snackbar
                             .make(coordinatorLayout, "Vpiši vse podatke!", Snackbar.LENGTH_LONG);
@@ -81,7 +81,7 @@ public class ExperienceRegister extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public class JSONTaskGet extends AsyncTask<String, Void, String> {
+    public class JSONTaskCheckUsername extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... params) {
@@ -91,7 +91,7 @@ public class ExperienceRegister extends AppCompatActivity {
             try {
                 URL url = new URL(params[0]);
                 connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("POST");
+                connection.setRequestMethod("GET");
                 connection.connect();
                 reader = new BufferedReader(
                         new InputStreamReader(connection.getInputStream()));
@@ -136,21 +136,14 @@ public class ExperienceRegister extends AppCompatActivity {
                 snackbar.show();;
 
             }
-            else {
-                if (result.equals("false")) {
-
-                    new JSONTaskPostUser().execute("http://skavtskiprirocnikapi.azurewebsites.net/api/users/" + username + "/" +
-                            new String(Hex.encodeHex(DigestUtils.sha256(password))
-                    ));
-
-                    Snackbar snackbar = Snackbar
-                            .make(coordinatorLayout, "Uspešno dodan uporabnik:" + etRegisterUsername.getText().toString()+ "(simulacija)", Snackbar.LENGTH_LONG);
-                    snackbar.show();
-                } else {
+            else if (result.equals("false")) {
                     Snackbar snackbar = Snackbar
                             .make(coordinatorLayout, "To uporabniško ime je že zasedeno!", Snackbar.LENGTH_LONG);
                     snackbar.show();
-                }
+
+            }
+            else if (result.equals("true")){
+                new JSONTaskPostUser().execute("http://skavtskiprirocnikapi.azurewebsites.net/api/users/" + username + "/" + password);
             }
             
         }
@@ -200,7 +193,23 @@ public class ExperienceRegister extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            tvLike.setText("Število všečkov: " + result);
+            if (result == null){
+                Snackbar snackbar = Snackbar
+                        .make(coordinatorLayout, "Napaka pri povezavi!", Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }
+            else if (result.equals("true")) {
+                Snackbar snackbar = Snackbar
+                        .make(coordinatorLayout, "Uspešno dodan uporabnik: " + username , Snackbar.LENGTH_LONG);
+                snackbar.show();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Intent start = new Intent(ExperienceRegister.this, ExperienceLogin.class);
+                startActivity(start);
+            }
         }
     }
 }

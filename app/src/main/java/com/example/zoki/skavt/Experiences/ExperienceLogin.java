@@ -14,11 +14,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+
 import com.example.zoki.skavt.About;
 import com.example.zoki.skavt.R;
+
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -39,8 +41,8 @@ public class ExperienceLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experience_login);
 
-        etUsername = (EditText) findViewById(R.id.etPassword);
-        etPassword = (EditText) findViewById(R.id.etUsername);
+        etUsername = (EditText) findViewById(R.id.etUsername);
+        etPassword = (EditText) findViewById(R.id.etPassword);
 
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id
                 .coordinatorLayout);
@@ -53,7 +55,7 @@ public class ExperienceLogin extends AppCompatActivity {
                 password = new String(Hex.encodeHex(DigestUtils.sha256(etPassword.getText().toString())));
 
                 if (!username.isEmpty() && !password.isEmpty()) {
-                    new JSONTaskGet().execute("http://skavtskiprirocnik.azurewebsites.net/api/users/" + username + "/" + password);
+                    new JSONTaskGet().execute("http://skavtskiprirocnikapi.azurewebsites.net/api/users/" + username + "/" + password);
                 } else {
                     Snackbar snackbar = Snackbar
                             .make(coordinatorLayout, "Vpiši vse podatke!", Snackbar.LENGTH_LONG);
