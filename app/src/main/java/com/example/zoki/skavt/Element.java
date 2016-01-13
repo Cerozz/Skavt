@@ -16,7 +16,7 @@ public class Element extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_element);
-        Vsebina vsebina = (Vsebina) getIntent().getSerializableExtra("Vsebina");
+        final Vsebina vsebina = (Vsebina) getIntent().getSerializableExtra("Vsebina");
         setTitle(vsebina.ime);
         Button button = (Button) findViewById(R.id.button2);
         button.setVisibility(View.GONE);
@@ -46,6 +46,9 @@ public class Element extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent start = new Intent(Element.this, Postopek.class);
+                Bundle extra = new Bundle();
+                extra.putString("ime", vsebina.ime);
+                start.putExtras(extra);
                 startActivity(start);
             }
         });

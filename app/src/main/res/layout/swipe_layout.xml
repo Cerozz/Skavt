@@ -4,9 +4,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:id="@+id/textViewOpis"
+        android:textSize="18dp"
+        android:gravity="center"/>
+
     <ImageView
         android:id="@+id/image_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:scaleType="fitXY" />
 
 </LinearLayout>

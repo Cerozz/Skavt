@@ -14,9 +14,10 @@ public class Postopek extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_postopek);
+        final String title = getIntent().getExtras().getString("ime");
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
-        adapter = new AdapterSwipe(this);
+        adapter = new AdapterSwipe(this, title);
         viewPager.setAdapter(adapter);
     }
 }
