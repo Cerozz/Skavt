@@ -1,6 +1,7 @@
 package com.example.zoki.skavt.Experiences;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -15,19 +16,14 @@ import android.widget.EditText;
 import com.example.zoki.skavt.About;
 import com.example.zoki.skavt.R;
 
-import org.json.JSONObject;
-
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.net.URLEncoder;
 
 public class ExperienceCreate extends AppCompatActivity {
 
@@ -49,7 +45,15 @@ public class ExperienceCreate extends AppCompatActivity {
         postExperience.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new JsonTaskExperiencePost().execute("http://skavtskiprirocnikapi.azurewebsites.net/api/experiences/" + etTitle.getText().toString() + "/" + etDetails.getText().toString() + "/" + username);
+                String title =  etTitle.getText().toString();//.replace(" ", "%20");
+                String details = etDetails.getText().toString();//.replace(" ", "%20");
+                try {
+                    title = URLEncoder.encode(title,"utf-8").replace("+", "%20");
+                    details = URLEncoder.encode(details,"utf-8").replace("+", "%20");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                new JsonTaskExperiencePost().execute("http://skavtskiprirocnikapi.azurewebsites.net/api/experiences/" + title + "/" + details + "/" + username);
             }
         });
     }
@@ -78,7 +82,7 @@ public class ExperienceCreate extends AppCompatActivity {
             BufferedReader reader = null;
             String finalJson = "";
             try {
-                URL url = new URL(params[0].replace(" ", "%20"));
+                URL url = new URL(params[0]);
 
                 connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("POST");
